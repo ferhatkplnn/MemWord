@@ -22,12 +22,12 @@ const wordsSlice = createSlice({
         };
       },
     },
+    editWord: wordsAdapter.updateOne,
   },
 });
 
-export const { selectIds: selectWordIds } = wordsAdapter.getSelectors(
-  (state) => state.words
-);
+export const { selectIds: selectWordIds, selectById: selectWordById } =
+  wordsAdapter.getSelectors((state) => state.words);
 
-export const { addWord } = wordsSlice.actions;
+export const { addWord, editWord } = wordsSlice.actions;
 export default wordsSlice.reducer;
