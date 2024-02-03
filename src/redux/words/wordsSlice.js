@@ -25,6 +25,12 @@ const wordsSlice = createSlice({
     editWord: wordsAdapter.updateOne,
     deleteWord: wordsAdapter.removeOne,
     addSentence: wordsAdapter.updateOne,
+    loadWords: (state) => {
+      wordsAdapter.setAll(
+        state,
+        JSON.parse(localStorage.getItem("words"))?.entities || []
+      );
+    },
   },
 });
 
