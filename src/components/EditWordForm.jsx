@@ -3,7 +3,11 @@ import Input from "./Input";
 import EditButton from "./buttons/EditButton";
 import DeleteButton from "./buttons/DeleteButton";
 import AddSentenceButton from "./buttons/AddSentenceButton";
-import { editWord, selectWordById } from "../redux/words/wordsSlice";
+import {
+  deleteWord,
+  editWord,
+  selectWordById,
+} from "../redux/words/wordsSlice";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -17,6 +21,10 @@ function EditWordForm({ id }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(editWord({ id, changes: { word, meaning } }));
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteWord(id));
   };
 
   return (
@@ -47,7 +55,7 @@ function EditWordForm({ id }) {
         </div>
 
         <EditButton type="submit" />
-        <DeleteButton type="button" />
+        <DeleteButton type="button" onClick={() => handleDelete(id)} />
         <AddSentenceButton type="button" />
       </form>
     </div>
