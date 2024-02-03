@@ -24,11 +24,13 @@ const wordsSlice = createSlice({
     },
     editWord: wordsAdapter.updateOne,
     deleteWord: wordsAdapter.removeOne,
+    addSentence: wordsAdapter.updateOne,
   },
 });
 
 export const { selectIds: selectWordIds, selectById: selectWordById } =
   wordsAdapter.getSelectors((state) => state.words);
 
-export const { addWord, editWord, deleteWord } = wordsSlice.actions;
+export const { addWord, editWord, deleteWord, addSentence } =
+  wordsSlice.actions;
 export default wordsSlice.reducer;
