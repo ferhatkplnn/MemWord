@@ -20,7 +20,7 @@ function Toast() {
 
     let id2 = setInterval(() => {
       dispatch(closeToast());
-    }, 5000);
+    }, 4400);
 
     return () => {
       clearInterval(id1);
