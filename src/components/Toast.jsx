@@ -38,7 +38,7 @@ function Toast() {
       <div
         className={`fixed right-4 -bottom-20 ${
           !isFirstRender ? " -translate-y-24" : ""
-        } flex px-4 py-4 rounded-md min-w-60 space-x-2 ${
+        } flex pl-4 pr-8 py-4 rounded-md min-w-60 space-x-2 ${
           toastClass[type]
         } duration-300`}
       >
@@ -61,7 +61,7 @@ function Toast() {
         <span className="font-semibold">{message}</span>
         <button
           onClick={handleCloseToast}
-          className="absolute top-1 right-1 hover:bg-green-900 rounded-sm duration-150"
+          className="absolute top-1 right-1 hover:bg-black/25 rounded-sm duration-150"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
