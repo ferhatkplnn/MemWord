@@ -48,7 +48,7 @@ function Toast() {
             />
           </svg>
         </i>
-        <span className="font-semibold">Success Toast</span>
+        <span className="font-semibold">{message}</span>
         <button
           onClick={handleCloseToast}
           className="absolute top-1 right-1 hover:bg-green-900 rounded-sm duration-150"
