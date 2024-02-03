@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { closeToast } from "../redux/words/UISlice";
 
 function Toast() {
-  const { status, type, message } = useSelector((state) => state.UI.toast);
+  const { type, message } = useSelector((state) => state.UI.toast);
   const [isFirstRender, setIsFirstRender] = useState(true);
+  const dispatch = useDispatch();
 
   const toastClass = {
     success: "bg-green-700/90 text-white",
@@ -12,11 +14,18 @@ function Toast() {
 
   useEffect(() => {
     setIsFirstRender(false);
-    let id = setInterval(() => {
+    let id1 = setInterval(() => {
       setIsFirstRender(true);
     }, 4000);
 
-    return () => clearInterval(id);
+    let id2 = setInterval(() => {
+      dispatch(closeToast());
+    }, 5000);
+
+    return () => {
+      clearInterval(id1);
+      clearInterval(id2);
+    };
   }, []);
 
   const handleCloseToast = () => {

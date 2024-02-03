@@ -5,7 +5,7 @@ const UISlice = createSlice({
   initialState: {
     modal: { isShowModal: false },
     toast: {
-      status: "showing", // idle || showing
+      status: "idle", // idle || showing
       type: "success", // success || warning
       message: "Hello World",
     },
@@ -18,8 +18,11 @@ const UISlice = createSlice({
       const { type, message } = action.payload;
       state.toast = { ...state.toast, status: "showing", type, message };
     },
+    closeToast: (state) => {
+      state.toast.status = "idle";
+    },
   },
 });
 
-export const { toggleModal, showToast } = UISlice.actions;
+export const { toggleModal, showToast, closeToast } = UISlice.actions;
 export default UISlice.reducer;

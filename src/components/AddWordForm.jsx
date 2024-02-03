@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import Input from "./Input";
 import AddButton from "./buttons/AddButton";
 import { addWord } from "../redux/words/wordsSlice";
+import { showToast } from "../redux/words/UISlice";
 
 function AddWordForm() {
   const [word, setWord] = useState("");
@@ -15,6 +16,7 @@ function AddWordForm() {
     dispatch(addWord({ word, meaning }));
     setWord("");
     setMeaning("");
+    dispatch(showToast({ type: "success", message: "Word added!" }));
   };
   return (
     <div className="py-4 px-8 bg-slate-700 rounded-lg">
