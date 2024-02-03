@@ -26,6 +26,7 @@ function Toast() {
       clearInterval(id1);
       clearInterval(id2);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCloseToast = () => {
