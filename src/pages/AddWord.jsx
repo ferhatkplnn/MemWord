@@ -4,6 +4,7 @@ import { selectWordIds } from "../redux/words/wordsSlice";
 import EditWordForm from "../components/EditWordForm";
 function AddWord() {
   const wordIds = useSelector(selectWordIds);
+  const reversedWordIds = wordIds.toReversed();
   console.log(wordIds);
   return (
     <>
@@ -13,7 +14,7 @@ function AddWord() {
         <AddWordForm />
 
         <div className="space-y-8 w-full">
-          {wordIds.map((id) => (
+          {reversedWordIds.map((id) => (
             <EditWordForm key={id} id={id} />
           ))}
         </div>
