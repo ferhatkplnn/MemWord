@@ -10,9 +10,14 @@ import {
 } from "../redux/words/wordsSlice";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import SentenceModal from "./SentenceModal";
+import { toggleModal } from "../redux/words/UISlice";
 
 function EditWordForm({ id }) {
   const data = useSelector((state) => selectWordById(state, id));
+  const { isShowModal } = useSelector((state) => state.UI.modal);
+  console.log(isShowModal);
+
   const [word, setWord] = useState(data.word);
   const [meaning, setMeaning] = useState(data.meaning);
 
@@ -25,6 +30,10 @@ function EditWordForm({ id }) {
 
   const handleDelete = (id) => {
     dispatch(deleteWord(id));
+  };
+
+  const handleModalClick = () => {
+    dispatch(toggleModal());
   };
 
   return (
@@ -56,8 +65,9 @@ function EditWordForm({ id }) {
 
         <EditButton type="submit" />
         <DeleteButton type="button" onClick={() => handleDelete(id)} />
-        <AddSentenceButton type="button" />
+        <AddSentenceButton type="button" onClick={handleModalClick} />
       </form>
+      {isShowModal && <SentenceModal id={id} />}
     </div>
   );
 }
