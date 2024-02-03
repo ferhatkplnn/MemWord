@@ -37,6 +37,6 @@ const wordsSlice = createSlice({
 export const { selectIds: selectWordIds, selectById: selectWordById } =
   wordsAdapter.getSelectors((state) => state.words);
 
-export const { addWord, editWord, deleteWord, addSentence } =
+export const { addWord, editWord, deleteWord, addSentence, loadWords } =
   wordsSlice.actions;
 export default wordsSlice.reducer;
