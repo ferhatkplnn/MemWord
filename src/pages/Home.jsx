@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center">
         <div className="grid grid-cols-2 gap-2">
           <Link to="/add-word">
             <div className="border-2 p-8 text-center space-y-4">
