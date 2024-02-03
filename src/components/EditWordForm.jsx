@@ -26,6 +26,9 @@ function EditWordForm({ id }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(editWord({ id, changes: { word, meaning } }));
+    dispatch(
+      showToast({ type: "success", message: `The word has been edited.` })
+    );
   };
 
   const handleDelete = (id) => {
