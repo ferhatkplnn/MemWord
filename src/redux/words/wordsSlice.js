@@ -25,5 +25,9 @@ const wordsSlice = createSlice({
   },
 });
 
+export const { selectIds: selectWordIds } = wordsAdapter.getSelectors(
+  (state) => state.words
+);
+
 export const { addWord } = wordsSlice.actions;
 export default wordsSlice.reducer;
