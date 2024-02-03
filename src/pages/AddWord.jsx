@@ -6,17 +6,19 @@ function AddWord() {
   const wordIds = useSelector(selectWordIds);
   console.log(wordIds);
   return (
-    <div className="flex flex-col justify-center items-center space-y-20  md:max-w-screen-lg mx-auto">
-      <h1 className="text-4xl font-medium p-8">Add Word</h1>
+    <>
+      <div className="flex flex-col justify-center items-center space-y-20  md:max-w-screen-lg mx-auto">
+        <h1 className="text-4xl font-medium p-8">Add Word</h1>
 
-      <AddWordForm />
+        <AddWordForm />
 
-      <div className="space-y-8 w-full">
-        {wordIds.map((id) => (
-          <EditWordForm key={id} id={id} />
-        ))}
+        <div className="space-y-8 w-full">
+          {wordIds.map((id) => (
+            <EditWordForm key={id} id={id} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
