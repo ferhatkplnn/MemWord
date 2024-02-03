@@ -11,7 +11,7 @@ import {
 import { useState } from "react";
 import PropTypes from "prop-types";
 import SentenceModal from "./SentenceModal";
-import { toggleModal } from "../redux/words/UISlice";
+import { showToast, toggleModal } from "../redux/words/UISlice";
 
 function EditWordForm({ id }) {
   const data = useSelector((state) => selectWordById(state, id));
@@ -30,6 +30,9 @@ function EditWordForm({ id }) {
 
   const handleDelete = (id) => {
     dispatch(deleteWord(id));
+    dispatch(
+      showToast({ type: "warning", message: `The word has been deleted.` })
+    );
   };
 
   const handleModalClick = () => {
