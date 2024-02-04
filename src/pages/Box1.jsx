@@ -17,12 +17,18 @@ function Box1() {
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
   const words = useSelector(selectBox1Words);
-  const [randomWordId, setRandomWordId] = useState(getRandomWordId(words));
+  const [randomWordId, setRandomWordId] = useState(() =>
+    getRandomWordId(words)
+  );
   const randomWord = useSelector((state) =>
     selectWordById(state, randomWordId)
   );
-  const [hiddenWord, setHiddenWord] = useState("");
-  const [sentence, setSentence] = useState("");
+  const [hiddenWord, setHiddenWord] = useState(() =>
+    hideWordLetters(randomWord.word)
+  );
+  const [sentence, setSentence] = useState(() =>
+    getRandomSentence(randomWord.sentences)
+  );
   const [showSentence, setShowSentence] = useState(false);
   const [warningClass, setWarningClass] = useState("");
 
@@ -46,19 +52,21 @@ function Box1() {
     e.preventDefault();
     if (!inputText) return;
 
-    if (randomWord.word.toLocaleLowerCase() === inputText.toLocaleLowerCase()) {
+    const isInputCorrect =
+      randomWord.word.toLowerCase() === inputText.toLowerCase();
+
+    if (isInputCorrect) {
       dispatch(increaseScore({ id: randomWord.id }));
-      setInputText("");
       setRandomWordId(getRandomWordId(words));
       setWarningClass("");
       setShowSentence(false);
     } else {
       setHiddenWord(randomWord.word);
       dispatch(decreaseScore({ id: randomWord.id, amount: 1 }));
-      setInputText("");
       setWarningClass("animate-wiggle text-red-500");
       setShowSentence(true);
     }
+    setInputText("");
   };
 
   return (
