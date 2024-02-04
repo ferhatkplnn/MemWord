@@ -1,8 +1,14 @@
 import { isAnyOf } from "@reduxjs/toolkit";
-import { addSentence, addWord, deleteWord, editWord } from "./words/wordsSlice";
+import {
+  addSentence,
+  addWord,
+  deleteWord,
+  editWord,
+  increaseScore,
+} from "./words/wordsSlice";
 
 export const saveWords = {
-  matcher: isAnyOf(addWord, editWord, deleteWord, addSentence),
+  matcher: isAnyOf(addWord, editWord, deleteWord, addSentence, increaseScore),
   effect: (action, listenerApi) => {
     console.log("LocalStorage guncellendi");
     const words = listenerApi.getState().words;
