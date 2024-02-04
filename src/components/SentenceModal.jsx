@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { toggleModal } from "../redux/words/UISlice";
+import { showToast, toggleModal } from "../redux/words/UISlice";
 import Input from "./Input";
 import { useDispatch, useSelector } from "react-redux";
 import { addSentence, selectWordById } from "../redux/words/wordsSlice";
@@ -18,6 +18,13 @@ function SentenceModal() {
     e.preventDefault();
     dispatch(
       addSentence({ id, changes: { sentences: [...sentences, sentence] } })
+    );
+    dispatch(
+      showToast({
+        type: "success",
+        status: "showing",
+        message: "Sentence has been added!",
+      })
     );
     setSentence("");
     handleCloseModal();
