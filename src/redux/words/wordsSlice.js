@@ -36,6 +36,20 @@ const wordsSlice = createSlice({
         JSON.parse(localStorage.getItem("words"))?.entities || []
       );
     },
+    increaseScore: (state, action) => {
+      const { id } = action.payload;
+
+      wordsAdapter.updateOne(state, {
+        id,
+        changes: {
+          count: {
+            ...state.entities[id].count,
+            current: state.entities[id].count.current + 1,
+            score: state.entities[id].count.score + 1,
+          },
+        },
+      });
+    },
   },
 });
 
@@ -49,6 +63,12 @@ export const selectBox1Words = createSelector(selectAllWords, (words) =>
   words.filter((word) => word.count.score <= 20)
 );
 
-export const { addWord, editWord, deleteWord, addSentence, loadWords } =
-  wordsSlice.actions;
+export const {
+  addWord,
+  editWord,
+  deleteWord,
+  addSentence,
+  loadWords,
+  increaseScore,
+} = wordsSlice.actions;
 export default wordsSlice.reducer;
