@@ -9,7 +9,7 @@ function NavigationCards({ to, title, description }) {
       >
         <div className=" text-center space-y-4">
           <h2 className="text-4xl font-medium">{title}</h2>
-          <p className="font-light  text-slate-500">{description}</p>
+          <p className="font-light  text-slate-400">{description}</p>
         </div>
       </Link>
     </>

@@ -43,7 +43,7 @@ function EditWordForm({ id }) {
   };
 
   return (
-    <div className="py-4 px-8 bg-slate-700 rounded-lg">
+    <div className="drop-shadow-2xl py-4 px-8 bg-slate-700 rounded-lg">
       <h2 className="text-center font-semibold text-xl p-2"></h2>
 
       <form
