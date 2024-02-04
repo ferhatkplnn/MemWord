@@ -23,7 +23,7 @@ function Box1() {
   );
   const [hiddenWord, setHiddenWord] = useState("");
   const [sentence, setSentence] = useState("");
-
+  const [showSentence, setShowSentence] = useState(false);
   const [warningClass, setWarningClass] = useState("");
 
   useEffect(() => {
@@ -51,11 +51,13 @@ function Box1() {
       setInputText("");
       setRandomWordId(getRandomWordId(words));
       setWarningClass("");
+      setShowSentence(false);
     } else {
       setHiddenWord(randomWord.word);
       dispatch(decreaseScore({ id: randomWord.id, amount: 1 }));
       setInputText("");
       setWarningClass("animate-wiggle text-red-500");
+      setShowSentence(true);
     }
   };
 
@@ -70,7 +72,7 @@ function Box1() {
           {hiddenWord}
         </div>
         <div className="text-sm text-slate-400 text-center min-h-6">
-          {sentence}
+          {showSentence ? sentence : ""}
         </div>
         <div className="flex flex-col w-full space-y-2">
           <form onSubmit={handleSubmit} className="space-y-2">
