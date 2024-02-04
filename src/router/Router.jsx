@@ -3,7 +3,11 @@ import App from "../App";
 import AddWord from "../pages/AddWord";
 import Home from "../pages/Home";
 import Box from "../pages/Box";
-import { selectBox1Words } from "../redux/words/wordsSlice";
+import {
+  selectBox1Words,
+  selectBox2Words,
+  selectBox3Words,
+} from "../redux/words/wordsSlice";
 
 export const router = createBrowserRouter([
   {
@@ -24,7 +28,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/box-2",
-        element: <Box selectBox1Words={selectBox1Words} decreaseAmount={2} />,
+        element: <Box selectBox1Words={selectBox2Words} decreaseAmount={4} />,
+      },
+      {
+        path: "/box-3",
+        element: <Box selectBox1Words={selectBox3Words} decreaseAmount={6} />,
       },
     ],
   },

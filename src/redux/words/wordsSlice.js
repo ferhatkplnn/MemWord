@@ -77,6 +77,14 @@ export const selectBox1Words = createSelector(selectAllWords, (words) =>
   words.filter((word) => word.count.score <= 20)
 );
 
+export const selectBox2Words = createSelector(selectAllWords, (words) =>
+  words.filter((word) => word.count.score > 20 && word.count.score <= 40)
+);
+
+export const selectBox3Words = createSelector(selectAllWords, (words) =>
+  words.filter((word) => word.count.score > 40)
+);
+
 export const {
   addWord,
   editWord,
