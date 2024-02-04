@@ -1,4 +1,9 @@
-import { createSlice, createEntityAdapter, nanoid } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createEntityAdapter,
+  createSelector,
+  nanoid,
+} from "@reduxjs/toolkit";
 
 export const wordsAdapter = createEntityAdapter();
 
@@ -34,8 +39,15 @@ const wordsSlice = createSlice({
   },
 });
 
-export const { selectIds: selectWordIds, selectById: selectWordById } =
-  wordsAdapter.getSelectors((state) => state.words);
+export const {
+  selectIds: selectWordIds,
+  selectById: selectWordById,
+  selectAll: selectAllWords,
+} = wordsAdapter.getSelectors((state) => state.words);
+
+export const selectBox1Words = createSelector(selectAllWords, (words) =>
+  words.filter((word) => word.count.score <= 20)
+);
 
 export const { addWord, editWord, deleteWord, addSentence, loadWords } =
   wordsSlice.actions;
