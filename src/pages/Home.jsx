@@ -14,7 +14,7 @@ function Home() {
             </div>
           </Link>
 
-          <Link>
+          <Link to={"/box-1"}>
             <div className="border-2 p-8 text-center space-y-4">
               <h2 className="text-4xl font-medium">Box 1</h2>
               <p className="font-light text-slate-500">
