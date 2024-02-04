@@ -91,9 +91,7 @@ function useRandomWord(words) {
   const randomWord = useSelector((state) =>
     selectWordById(state, randomWordId)
   );
-  const [hiddenWord, setHiddenWord] = useState(() =>
-    hideWordLetters(randomWord.word)
-  );
+  const [hiddenWord, setHiddenWord] = useState("");
   const [sentence, setSentence] = useState(() =>
     getRandomSentence(randomWord.sentences)
   );
