@@ -6,7 +6,11 @@ import {
   selectWordById,
 } from "../redux/words/wordsSlice";
 import Input from "../components/Input";
-import { getRandomWordId, hideWordLetters } from "../utils/utils";
+import {
+  getRandomSentence,
+  getRandomWordId,
+  hideWordLetters,
+} from "../utils/utils";
 import { useEffect, useState } from "react";
 
 function Box1() {
@@ -19,9 +23,15 @@ function Box1() {
   );
   const [hiddenWord, setHiddenWord] = useState("");
 
+  const [sentence, setSentence] = useState("");
+
   useEffect(() => {
     setHiddenWord(hideWordLetters(randomWord.word));
   }, [randomWord.word]);
+
+  useEffect(() => {
+    setSentence(getRandomSentence(randomWord.sentences));
+  }, [randomWord.sentences]);
 
   if (words.length === 0) {
     return (
@@ -53,8 +63,8 @@ function Box1() {
         <div className="text-4xl font-extrabold h-40 break-all mt-12 tracking-widest">
           {hiddenWord}
         </div>
-        <div className="text-sm text-slate-400 text-center">
-          this is a pencil
+        <div className="text-sm text-slate-400 text-center min-h-6">
+          {sentence}
         </div>
         <div className="flex flex-col w-full space-y-2">
           <form onSubmit={handleSubmit} className="space-y-2">
