@@ -50,6 +50,20 @@ const wordsSlice = createSlice({
         },
       });
     },
+    decreaseScore: (state, action) => {
+      const { id, amount } = action.payload;
+
+      wordsAdapter.updateOne(state, {
+        id,
+        changes: {
+          count: {
+            ...state.entities[id].count,
+            wrong: state.entities[id].count.wrong + 1,
+            score: state.entities[id].count.score - amount,
+          },
+        },
+      });
+    },
   },
 });
 
@@ -70,5 +84,6 @@ export const {
   addSentence,
   loadWords,
   increaseScore,
+  decreaseScore,
 } = wordsSlice.actions;
 export default wordsSlice.reducer;
