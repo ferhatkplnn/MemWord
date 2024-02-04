@@ -7,6 +7,7 @@ const SpeakButton = ({ text, ...props }) => {
     const msg = new SpeechSynthesisUtterance();
     msg.text = text;
     msg.rate = rate;
+    msg.lang = "en-US";
 
     msg.onstart = () => {
       setIsSpeaking(true);
