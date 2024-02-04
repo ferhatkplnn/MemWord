@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gradient-to-b from-slate-800 to-slate-700 text-slate-200 h-screen;
+@layer base {
+  body {
+    @apply bg-slate-800 text-slate-200;
+  }
 }
