@@ -22,8 +22,9 @@ function Box1() {
     selectWordById(state, randomWordId)
   );
   const [hiddenWord, setHiddenWord] = useState("");
-
   const [sentence, setSentence] = useState("");
+
+  const [warningClass, setWarningClass] = useState("");
 
   useEffect(() => {
     setHiddenWord(hideWordLetters(randomWord.word));
@@ -49,9 +50,12 @@ function Box1() {
       dispatch(increaseScore({ id: randomWord.id }));
       setInputText("");
       setRandomWordId(getRandomWordId(words));
+      setWarningClass("");
     } else {
       setHiddenWord(randomWord.word);
       dispatch(decreaseScore({ id: randomWord.id, amount: 1 }));
+      setInputText("");
+      setWarningClass("animate-wiggle text-red-500");
     }
   };
 
@@ -60,7 +64,9 @@ function Box1() {
       <h2 className="text-3xl font-semibold">Beginner Word Box</h2>
       <div className="flex flex-col items-center p-4 rounded-md bg-slate-700 w-1/3 min-w-96">
         <div className="text-2xl font-semibold">{randomWord.meaning}</div>
-        <div className="text-4xl font-extrabold h-40 break-all mt-12 tracking-widest">
+        <div
+          className={`text-4xl font-extrabold h-40 break-all mt-12 tracking-widest ${warningClass}`}
+        >
           {hiddenWord}
         </div>
         <div className="text-sm text-slate-400 text-center min-h-6">
