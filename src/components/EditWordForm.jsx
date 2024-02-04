@@ -10,13 +10,10 @@ import {
 } from "../redux/words/wordsSlice";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import SentenceModal from "./SentenceModal";
 import { showToast, toggleModal } from "../redux/words/UISlice";
 
 function EditWordForm({ id }) {
   const data = useSelector((state) => selectWordById(state, id));
-  const { isShowModal } = useSelector((state) => state.UI.modal);
-  console.log(isShowModal);
 
   const [word, setWord] = useState(data.word);
   const [meaning, setMeaning] = useState(data.meaning);
@@ -75,7 +72,6 @@ function EditWordForm({ id }) {
           <AddSentenceButton type="button" onClick={handleModalClick} />
         </div>
       </form>
-      {isShowModal && <SentenceModal />}
     </div>
   );
 }

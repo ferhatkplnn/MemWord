@@ -42,7 +42,7 @@ function SentenceModal() {
     <>
       <div className="fixed w-full h-screen inset-0 backdrop-blur-lg flex justify-center items-center">
         <div
-          className={`relative opacity-70 scale-110 flex-1 max-w-xl flex flex-col bg-slate-800 space-y-8 rounded-md p-8 duration-500 ${
+          className={`relative  opacity-70 scale-110 flex-1 max-w-xl flex flex-col bg-slate-800 space-y-8 rounded-md p-8 duration-500 ${
             isEffectActive ? " !opacity-100 !scale-100" : ""
           }`}
         >
