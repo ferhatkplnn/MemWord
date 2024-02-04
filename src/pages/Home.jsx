@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import NavigationCards from "../components/NavigationCards";
 
 function Home() {
   return (
     <>
-      <div className="flex justify-center items-center max-w-screen-xl mx-auto">
-        <div className="grid grid-cols-3 grid-rows-2 gap-2">
+      <div className="flex justify-center items-center max-w-screen-md xl:max-w-screen-lg mx-auto ">
+        <div className="grid grid-rows-2 px-8 md:grid-cols-2 xl:grid-cols-3 gap-2 mb-24">
           <NavigationCards
             to="/add-word"
             title="Add Word"

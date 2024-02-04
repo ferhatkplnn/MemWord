@@ -1,8 +1,8 @@
-function AddButton(props) {
+function AddButton({ className, ...props }) {
   return (
     <>
       <button
-        className="p-2 bg-slate-600 rounded-md hover:bg-slate-500 outline-none focus:border-sky-300 focus:ring-2 focus:ring-sky-300 duration-150 "
+        className={`p-2 bg-slate-600 rounded-md hover:bg-slate-500 outline-none focus:border-sky-300 focus:ring-2 focus:ring-sky-300 duration-150 ${className}`}
         {...props}
       >
         <svg

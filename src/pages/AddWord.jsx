@@ -8,12 +8,12 @@ function AddWord() {
   console.log(wordIds);
   return (
     <>
-      <div className="flex flex-col justify-center items-center space-y-20  md:max-w-screen-lg mx-auto">
+      <div className="flex flex-col justify-center items-center space-y-8 max-w-sm p-8 md:max-w-screen-lg mx-auto">
         <h1 className="text-4xl font-medium ">Add Word</h1>
 
         <AddWordForm />
 
-        <div className="space-y-8 w-full">
+        <div className="space-y-2 ">
           {reversedWordIds.map((id) => (
             <EditWordForm key={id} id={id} />
           ))}

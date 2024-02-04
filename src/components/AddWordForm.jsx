@@ -22,7 +22,10 @@ function AddWordForm() {
     <div className="py-4 px-8 bg-slate-700 rounded-lg">
       <h2 className="text-center font-semibold text-xl p-2">Add a new word</h2>
 
-      <form onSubmit={handleSubmit} className="flex items-start">
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-start flex-col md:flex-row"
+      >
         <div className="flex flex-col">
           <Input
             onChange={(e) => setWord(e.target.value)}
@@ -44,7 +47,7 @@ function AddWordForm() {
             Meaning
           </span>
         </div>
-        <AddButton />
+        <AddButton className="self-end md:self-start" />
       </form>
     </div>
   );
