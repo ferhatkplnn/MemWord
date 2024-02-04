@@ -60,10 +60,4 @@ npm run dev
 
 Kat contributions.md dosyasını inceleyerek katkıda bulunma süreci hakkında daha fazla bilgi edinebilirsiniz.
 
-## Lisans
 
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylı bilgiler için [LICENSE.md](LICENSE.md) dosyasını inceleyebilirsiniz.
-
----
-
-Umarım bu Readme dosyası ihtiyaçlarınıza uygun olur. Başarılar dilerim!
