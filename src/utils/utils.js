@@ -4,6 +4,12 @@ export const getRandomWordId = (words) => {
   return randomWord.id;
 };
 
+export const getRandomSentence = (sentences) => {
+  const randomIndex = Math.floor(Math.random() * sentences.length);
+  const randomSentence = sentences[randomIndex];
+  return randomSentence;
+};
+
 export const hideWordLetters = (word) => {
   if (typeof word !== "string") {
     throw new Error("Input should be a string.");
