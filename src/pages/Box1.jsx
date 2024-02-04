@@ -17,9 +17,7 @@ function Box1() {
   const randomWord = useSelector((state) =>
     selectWordById(state, randomWordId)
   );
-  const [hiddenWord, setHiddenWord] = useState(
-    hideWordLetters(randomWord?.word || "no more")
-  );
+  const [hiddenWord, setHiddenWord] = useState("");
 
   useEffect(() => {
     setHiddenWord(hideWordLetters(randomWord.word));
@@ -38,7 +36,6 @@ function Box1() {
     if (!inputText) return;
 
     if (randomWord.word.toLocaleLowerCase() === inputText.toLocaleLowerCase()) {
-      alert("Correct!");
       dispatch(increaseScore({ id: randomWord.id }));
       setInputText("");
       setRandomWordId(getRandomWordId(words));
