@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   decreaseScore,
   increaseScore,
-  selectBox1Words,
+  // selectBox1Words,
   selectWordById,
 } from "../redux/words/wordsSlice";
 import Input from "../components/Input";
@@ -15,7 +15,7 @@ import {
 import { useEffect, useState } from "react";
 import SpeakButton from "../components/SpeakButton";
 
-function Box1() {
+function Box({ selectBox1Words, decreaseAmount }) {
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
   const words = useSelector(selectBox1Words);
@@ -41,7 +41,7 @@ function Box1() {
       dispatch(increaseScore({ id: randomWord.id }));
       nextWord();
     } else {
-      dispatch(decreaseScore({ id: randomWord.id, amount: 1 }));
+      dispatch(decreaseScore({ id: randomWord.id, amount: decreaseAmount }));
       showHint();
     }
     setInputText("");
@@ -92,7 +92,7 @@ function Box1() {
   );
 }
 
-export default Box1;
+export default Box;
 
 function useRandomWord(words) {
   const [randomWordId, setRandomWordId] = useState(() =>
