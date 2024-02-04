@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   decreaseScore,
   increaseScore,
-  // selectBox1Words,
   selectWordById,
 } from "../redux/words/wordsSlice";
 import Input from "../components/Input";
