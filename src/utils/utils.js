@@ -1,7 +1,7 @@
 export const getRandomWordId = (words) => {
   const randomIndex = Math.floor(Math.random() * words.length);
   const randomWord = words[randomIndex];
-  return randomWord.id;
+  return randomWord?.id;
 };
 
 export const getRandomSentence = (sentences) => {

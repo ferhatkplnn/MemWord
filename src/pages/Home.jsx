@@ -1,27 +1,34 @@
 import { Link } from "react-router-dom";
+import NavigationCards from "../components/NavigationCards";
 
 function Home() {
   return (
     <>
-      <div className="flex justify-center items-center">
-        <div className="grid grid-cols-2 gap-2">
-          <Link to="/add-word">
-            <div className="bg-slate-700 rounded-lg shadow-xl p-8 text-center space-y-4 hover:ring-4">
-              <h2 className="text-4xl font-medium">Add Word</h2>
-              <p className="font-light  text-slate-500">
-                You can add words from here.
-              </p>
-            </div>
-          </Link>
+      <div className="flex justify-center items-center max-w-screen-xl mx-auto">
+        <div className="grid grid-cols-3 grid-rows-2 gap-2">
+          <NavigationCards
+            to="/add-word"
+            title="Add Word"
+            description="You can add words from here"
+          />
 
-          <Link to={"/box-1"}>
-            <div className="bg-slate-700 rounded-lg shadow-xl p-8 text-center space-y-4 hover:ring-4">
-              <h2 className="text-4xl font-medium">Box 1</h2>
-              <p className="font-light text-slate-500">
-                This box contains the first words you added.
-              </p>
-            </div>
-          </Link>
+          <NavigationCards
+            to="/box-1"
+            title="Box 1"
+            description="This box contains the first words you added."
+          />
+
+          <NavigationCards
+            to="/box-2"
+            title="Box 2"
+            description="This box is for reviewing the words you have learned, it contains the words you learned in the first box. When you get the words right in this box they will be transferred to box 3."
+          />
+
+          <NavigationCards
+            to="/box-3"
+            title="Box 3"
+            description="This box is the last box. Use this box to repeat the words you have learned."
+          />
         </div>
       </div>
     </>
