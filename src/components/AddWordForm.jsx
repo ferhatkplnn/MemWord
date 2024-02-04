@@ -16,11 +16,13 @@ function AddWordForm() {
     dispatch(addWord({ word, meaning }));
     setWord("");
     setMeaning("");
-    dispatch(showToast({ type: "success", message: "Word added!" }));
+    dispatch(showToast({ type: "success", message: "Kelime eklendi!" }));
   };
   return (
     <div className="drop-shadow-2xl py-4 px-8 bg-slate-700 rounded-lg">
-      <h2 className="text-center font-semibold text-xl p-2">Add a new word</h2>
+      <h2 className="text-center font-semibold text-xl p-2">
+        Yeni bir Kelime ekle
+      </h2>
 
       <form
         onSubmit={handleSubmit}
@@ -33,7 +35,7 @@ function AddWordForm() {
             required
           />
           <span className="font-extralight text-sm text-slate-400 mt-1">
-            Word
+            Kelime
           </span>
         </div>
 
@@ -44,7 +46,7 @@ function AddWordForm() {
             required
           />
           <span className="font-extralight text-sm text-slate-400 mt-1">
-            Meaning
+            Anlamı
           </span>
         </div>
         <AddButton className="self-end md:self-start" />

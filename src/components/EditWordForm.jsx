@@ -26,16 +26,12 @@ function EditWordForm({ id }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(editWord({ id, changes: { word, meaning } }));
-    dispatch(
-      showToast({ type: "success", message: `The word has been edited.` })
-    );
+    dispatch(showToast({ type: "success", message: `Kelime düzenlendi!` }));
   };
 
   const handleDelete = (id) => {
     dispatch(deleteWord(id));
-    dispatch(
-      showToast({ type: "warning", message: `The word has been deleted.` })
-    );
+    dispatch(showToast({ type: "warning", message: `Kelime silindi!` }));
   };
 
   const handleModalClick = () => {
@@ -58,7 +54,7 @@ function EditWordForm({ id }) {
             required
           />
           <span className="font-extralight text-sm text-slate-400 mt-1">
-            Word
+            Kelime
           </span>
         </div>
 
@@ -69,7 +65,7 @@ function EditWordForm({ id }) {
             required
           />
           <span className="font-extralight text-sm text-slate-400 mt-1">
-            Meaning
+            Anlamı
           </span>
         </div>
 

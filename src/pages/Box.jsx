@@ -51,15 +51,13 @@ function Box({ selectBox1Words, decreaseAmount }) {
   if (words.length === 0) {
     return (
       <div className="text-3xl text-center text-yellow-400">
-        There are no more words.
+        Başka kelime yok.
       </div>
     );
   }
 
   return (
     <div className="flex flex-col  justify-center items-center space-y-8  pb-20">
-      <h2 className="text-3xl font-semibold">Beginner Word Box</h2>
-
       <div className="drop-shadow-2xl flex flex-col items-center p-4 rounded-md bg-slate-700 w-11/12 sm:w-2/3 lg:w-1/3">
         <SpeakButton className="self-start" text={randomWord.word} />
         <div className="text-2xl font-semibold">{randomWord.meaning}</div>
@@ -86,7 +84,7 @@ function Box({ selectBox1Words, decreaseAmount }) {
             />
 
             <button className="w-full bg-sky-300 text-slate-800 font-bold py-2 rounded-md hover:bg-sky-400 duration-150">
-              Send
+              Gönder
             </button>
           </form>
         </div>

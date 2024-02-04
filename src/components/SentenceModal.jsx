@@ -23,7 +23,7 @@ function SentenceModal() {
       showToast({
         type: "success",
         status: "showing",
-        message: "Sentence has been added!",
+        message: "Cümle eklendi!",
       })
     );
     setSentence("");
