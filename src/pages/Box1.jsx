@@ -1,17 +1,29 @@
 import { useSelector, useDispatch } from "react-redux";
-import { increaseScore, selectBox1Words } from "../redux/words/wordsSlice";
+import {
+  decreaseScore,
+  increaseScore,
+  selectBox1Words,
+  selectWordById,
+} from "../redux/words/wordsSlice";
 import Input from "../components/Input";
-import { getRandomWord, hideWordLetters } from "../utils/utils";
-import { useState } from "react";
+import { getRandomWordId, hideWordLetters } from "../utils/utils";
+import { useEffect, useState } from "react";
 
 function Box1() {
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
   const words = useSelector(selectBox1Words);
-  const [randomWord, setRandomWord] = useState(getRandomWord(words));
+  const [randomWordId, setRandomWordId] = useState(getRandomWordId(words));
+  const randomWord = useSelector((state) =>
+    selectWordById(state, randomWordId)
+  );
   const [hiddenWord, setHiddenWord] = useState(
     hideWordLetters(randomWord?.word || "no more")
   );
+
+  useEffect(() => {
+    setHiddenWord(hideWordLetters(randomWord.word));
+  }, [randomWord.word]);
 
   if (words.length === 0) {
     return (
@@ -24,16 +36,15 @@ function Box1() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!inputText) return;
+
     if (randomWord.word.toLocaleLowerCase() === inputText.toLocaleLowerCase()) {
       alert("Correct!");
       dispatch(increaseScore({ id: randomWord.id }));
-
       setInputText("");
-      const newRandomWord = getRandomWord(words);
-      setRandomWord(newRandomWord);
-      setHiddenWord(hideWordLetters(newRandomWord.word));
+      setRandomWordId(getRandomWordId(words));
     } else {
       setHiddenWord(randomWord.word);
+      dispatch(decreaseScore({ id: randomWord.id, amount: 1 }));
     }
   };
 

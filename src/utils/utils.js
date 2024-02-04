@@ -1,7 +1,7 @@
-export const getRandomWord = (words) => {
+export const getRandomWordId = (words) => {
   const randomIndex = Math.floor(Math.random() * words.length);
   const randomWord = words[randomIndex];
-  return randomWord;
+  return randomWord.id;
 };
 
 export const hideWordLetters = (word) => {
