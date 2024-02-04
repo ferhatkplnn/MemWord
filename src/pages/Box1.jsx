@@ -10,8 +10,10 @@ import {
   getRandomSentence,
   getRandomWordId,
   hideWordLetters,
+  speak,
 } from "../utils/utils";
 import { useEffect, useState } from "react";
+import SpeakButton from "../components/SpeakButton";
 
 function Box1() {
   const dispatch = useDispatch();
@@ -43,6 +45,7 @@ function Box1() {
       showHint();
     }
     setInputText("");
+    speak(randomWord.word);
   };
 
   return (
@@ -50,14 +53,21 @@ function Box1() {
       <h2 className="text-3xl font-semibold">Beginner Word Box</h2>
       {words.length > 0 ? (
         <div className="flex flex-col items-center p-4 rounded-md bg-slate-700 w-1/3 min-w-96">
+          <SpeakButton className="self-start" text={randomWord.word} />
           <div className="text-2xl font-semibold">{randomWord.meaning}</div>
           <div
             className={`text-4xl font-extrabold h-40 break-all mt-12 tracking-widest ${warningClass}`}
           >
             {hiddenWord}
           </div>
-          <div className="text-sm text-slate-400 text-center min-h-6">
-            {showSentence ? sentence : ""}
+          <div className="flex w-full flex-col  text-sm text-slate-400 text-center min-h-12">
+            {showSentence ? (
+              <>
+                <SpeakButton text={sentence} /> <span>{sentence}</span>
+              </>
+            ) : (
+              ""
+            )}
           </div>
           <div className="flex flex-col w-full space-y-2">
             <form onSubmit={handleSubmit} className="space-y-2">
