@@ -4,7 +4,7 @@ import { selectWordIds } from "../redux/words/wordsSlice";
 import EditWordForm from "../components/EditWordForm";
 function AddWord() {
   const wordIds = useSelector(selectWordIds);
-  const reversedWordIds = wordIds.toReversed();
+  const reversedWordIds = [...wordIds].reverse();
   console.log(wordIds);
   return (
     <>
