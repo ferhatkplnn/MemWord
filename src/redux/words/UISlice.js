@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const UISlice = createSlice({
   name: "UI",
   initialState: {
-    modal: { isShowModal: false },
+    modal: { isShowModal: false, data: "" },
     toast: {
       status: "idle", // idle || showing
       type: "success", // success || warning
@@ -11,8 +11,13 @@ const UISlice = createSlice({
     },
   },
   reducers: {
-    toggleModal: (state) => {
-      state.modal.isShowModal = !state.modal.isShowModal;
+    toggleModal: (state, action) => {
+      const { id } = action.payload;
+      state.modal = {
+        ...state.modal,
+        isShowModal: !state.modal.isShowModal,
+        data: id,
+      };
     },
     showToast: (state, action) => {
       const { type, message } = action.payload;

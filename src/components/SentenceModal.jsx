@@ -3,14 +3,15 @@ import { toggleModal } from "../redux/words/UISlice";
 import Input from "./Input";
 import { useDispatch, useSelector } from "react-redux";
 import { addSentence, selectWordById } from "../redux/words/wordsSlice";
-function SentenceModal({ id }) {
+function SentenceModal() {
   const [sentence, setSentence] = useState("");
+  const id = useSelector((state) => state.UI.modal.data);
   const { sentences } = useSelector((state) => selectWordById(state, id));
   const [isEffectActive, setIsEffetcActive] = useState(false);
 
   const dispatch = useDispatch();
   const handleCloseModal = () => {
-    dispatch(toggleModal());
+    dispatch(toggleModal(id));
   };
 
   const handleSubmit = (e) => {

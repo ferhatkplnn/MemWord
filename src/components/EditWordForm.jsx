@@ -39,7 +39,7 @@ function EditWordForm({ id }) {
   };
 
   const handleModalClick = () => {
-    dispatch(toggleModal());
+    dispatch(toggleModal({ id }));
   };
 
   return (
@@ -73,7 +73,7 @@ function EditWordForm({ id }) {
         <DeleteButton type="button" onClick={() => handleDelete(id)} />
         <AddSentenceButton type="button" onClick={handleModalClick} />
       </form>
-      {isShowModal && <SentenceModal id={id} />}
+      {isShowModal && <SentenceModal />}
     </div>
   );
 }
