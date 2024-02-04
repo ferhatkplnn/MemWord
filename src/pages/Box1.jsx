@@ -1,22 +1,37 @@
-import { useSelector } from "react-redux";
-import { selectBox1Words } from "../redux/words/wordsSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { increaseScore, selectBox1Words } from "../redux/words/wordsSlice";
 import Input from "../components/Input";
 import { getRandomWord, hideWordLetters } from "../utils/utils";
 import { useState } from "react";
 
 function Box1() {
+  const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
   const words = useSelector(selectBox1Words);
   const [randomWord, setRandomWord] = useState(getRandomWord(words));
   const [hiddenWord, setHiddenWord] = useState(
-    hideWordLetters(randomWord.word)
+    hideWordLetters(randomWord?.word || "no more")
   );
+
+  if (words.length === 0) {
+    return (
+      <div className="text-3xl text-center text-yellow-400">
+        There are no more words.
+      </div>
+    );
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!inputText) return;
     if (randomWord.word.toLocaleLowerCase() === inputText.toLocaleLowerCase()) {
       alert("Correct!");
+      dispatch(increaseScore({ id: randomWord.id }));
+
+      setInputText("");
+      const newRandomWord = getRandomWord(words);
+      setRandomWord(newRandomWord);
+      setHiddenWord(hideWordLetters(newRandomWord.word));
     } else {
       setHiddenWord(randomWord.word);
     }
