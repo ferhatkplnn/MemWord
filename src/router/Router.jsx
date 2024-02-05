@@ -7,6 +7,7 @@ import {
   selectBox1Words,
   selectBox2Words,
   selectBox3Words,
+  selectHardBoxWords,
 } from "../redux/words/wordsSlice";
 
 export const router = createBrowserRouter([
@@ -33,6 +34,12 @@ export const router = createBrowserRouter([
       {
         path: "/box-3",
         element: <Box selectBox1Words={selectBox3Words} decreaseAmount={6} />,
+      },
+      {
+        path: "hard-box",
+        element: (
+          <Box selectBox1Words={selectHardBoxWords} decreaseAmount={3} />
+        ),
       },
     ],
   },

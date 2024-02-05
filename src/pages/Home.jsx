@@ -28,6 +28,12 @@ function Home() {
             title="Kutu 3"
             description="Bu kutu son kutudur. Öğrendiğiniz kelimeleri tekrar etmek için bu kutuyu kullanın."
           />
+
+          <NavigationCards
+            to="/hard-box"
+            title="Zor kutu"
+            description="Bu kutu içerisinde en çok hata yaptığınız kelimeler bulunmaktadır."
+          />
         </div>
       </div>
     </>
