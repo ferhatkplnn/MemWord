@@ -34,6 +34,12 @@ function Home() {
             title="Zor kutu"
             description="Bu kutu içerisinde en çok hata yaptığınız kelimeler bulunmaktadır."
           />
+
+          <NavigationCards
+            to="/card"
+            title="Kartlar"
+            description="Bu bölüm içerisinde kelimelerin bulunduğu kartlar bulunmaktadır. Bu kartlar 1. ve 2. kutulardaki kelimeleri içermektedir."
+          />
         </div>
       </div>
     </>
