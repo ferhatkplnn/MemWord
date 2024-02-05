@@ -39,4 +39,10 @@ export const speak = (text, rate = 0.8) => {
   msg.rate = rate;
   msg.lang = "en-US";
   window.speechSynthesis.speak(msg);
+
+  const cancelSpeech = () => {
+    window.speechSynthesis.cancel();
+  };
+
+  return cancelSpeech;
 };
