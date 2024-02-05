@@ -11,7 +11,7 @@ import {
   hideWordLetters,
   speak,
 } from "../utils/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SpeakButton from "../components/SpeakButton";
 
 function Box({ selectBoxWords, decreaseAmount }) {
@@ -104,6 +104,7 @@ function Box({ selectBoxWords, decreaseAmount }) {
 export default Box;
 
 function useRandomWord(words) {
+  const prevWordIdRef = useRef(null);
   const [randomWordId, setRandomWordId] = useState(() =>
     getRandomWordId(words)
   );
@@ -126,10 +127,14 @@ function useRandomWord(words) {
   }, [randomWord?.word]);
 
   const nextWord = () => {
-    setRandomWordId(getRandomWordId(words));
+    let newWordId = getRandomWordId(words);
+    while (words.length !== 1 && newWordId === prevWordIdRef.current) {
+      newWordId = getRandomWordId(words);
+    }
+    prevWordIdRef.current = newWordId;
+    setRandomWordId(newWordId);
     setWarningClass("");
     setShowSentence(false);
-    setHiddenWord(hideWordLetters(randomWord?.word || "no more"));
   };
 
   const showHint = () => {
