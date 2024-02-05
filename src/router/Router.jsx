@@ -25,21 +25,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/box-1",
-        element: <Box selectBox1Words={selectBox1Words} decreaseAmount={2} />,
+        element: <Box selectBoxWords={selectBox1Words} decreaseAmount={2} />,
       },
       {
         path: "/box-2",
-        element: <Box selectBox1Words={selectBox2Words} decreaseAmount={4} />,
+        element: <Box selectBoxWords={selectBox2Words} decreaseAmount={4} />,
       },
       {
         path: "/box-3",
-        element: <Box selectBox1Words={selectBox3Words} decreaseAmount={6} />,
+        element: <Box selectBoxWords={selectBox3Words} decreaseAmount={6} />,
       },
       {
         path: "hard-box",
-        element: (
-          <Box selectBox1Words={selectHardBoxWords} decreaseAmount={3} />
-        ),
+        element: <Box selectBoxWords={selectHardBoxWords} decreaseAmount={3} />,
       },
     ],
   },

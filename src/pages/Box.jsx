@@ -14,10 +14,10 @@ import {
 import { useEffect, useState } from "react";
 import SpeakButton from "../components/SpeakButton";
 
-function Box({ selectBox1Words, decreaseAmount }) {
+function Box({ selectBoxWords, decreaseAmount }) {
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
-  const words = useSelector(selectBox1Words);
+  const words = useSelector(selectBoxWords);
 
   const {
     randomWord,
