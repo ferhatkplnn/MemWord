@@ -32,6 +32,5 @@
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
     z-index: 0;
-    @apply bg-slate-300;
   }
 }

@@ -1,26 +1,38 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectCardWords } from "../redux/words/wordsSlice";
 
 function Card() {
   const [isShowBack, setIsShowBack] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const words = useSelector(selectCardWords);
+  console.log(words);
+
+  const handleNextClick = () => {
+    setWordIndex((prev) => (prev !== words.length - 1 ? prev + 1 : prev));
+  };
+
+  const handlePrevClick = () => {
+    setWordIndex((prev) => (prev !== 0 ? prev - 1 : prev));
+  };
+
   return (
     <div className="flex flex-col justify-center items-center">
       <div
         onClick={() => setIsShowBack(!isShowBack)}
         className={`card ${
           isShowBack ? "open" : ""
-        } h-96 flex flex-col items-center rounded-md bg-slate-700 w-11/12 sm:max-w-lg `}
+        } h-96 flex flex-col items-center rounded-md bg-slate-700 w-11/12 sm:max-w-lg cursor-pointer select-none`}
       >
-        <div className="front text-5xl">?</div>
-        <div className={`back`}>
-          <img
-            src={`https://raw.githubusercontent.com/samiheikki/javascript-guessing-game/master/static/logos/react.png`}
-            alt=""
-            className="p-4"
-          />
-        </div>
+        <div className="front text-5xl">{words[wordIndex].word}</div>
+        <div className="back text-5xl">{words[wordIndex].meaning}</div>
       </div>
       <div className="space-x-4 py-2 flex items-center">
-        <button className="border-2 border-slate-400 rounded-full p-3 hover:bg-slate-100/20 duration-150">
+        <button
+          disabled={wordIndex === 0}
+          onClick={handlePrevClick}
+          className="border-2 border-slate-400 rounded-full p-3 hover:bg-slate-100/20 duration-150 disabled:border-slate-600 disabled:hover:bg-transparent"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -36,8 +48,13 @@ function Card() {
             />
           </svg>
         </button>
-        <span>1 / 20</span>
-        <button className="border-2 border-slate-400 rounded-full p-3 hover:bg-slate-100/20 duration-150">
+        <span>
+          {wordIndex + 1} / {words.length}
+        </span>
+        <button
+          onClick={handleNextClick}
+          className="border-2 border-slate-400 rounded-full p-3 hover:bg-slate-100/20 duration-150 disabled:border-slate-600 disabled:hover:bg-transparent"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
