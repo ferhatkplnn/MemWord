@@ -85,6 +85,10 @@ export const selectBox3Words = createSelector(selectAllWords, (words) =>
   words.filter((word) => word.count.score > 40)
 );
 
+export const selectHardBoxWords = createSelector(selectAllWords, (words) =>
+  words.filter((word) => word.count.wrong > 40 && word.count.score < 80)
+);
+
 export const {
   addWord,
   editWord,
