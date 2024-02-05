@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 
 const SpeakButton = ({ text, ...props }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -66,4 +66,6 @@ const SpeakButton = ({ text, ...props }) => {
   );
 };
 
-export default SpeakButton;
+const MemoizedSpeakButton = memo(SpeakButton);
+
+export default MemoizedSpeakButton;

@@ -2,10 +2,12 @@ import AddWordForm from "../components/AddWordForm";
 import { useSelector } from "react-redux";
 import { selectWordIds } from "../redux/words/wordsSlice";
 import EditWordForm from "../components/EditWordForm";
+import { useMemo } from "react";
 function AddWord() {
   const wordIds = useSelector(selectWordIds);
-  const reversedWordIds = [...wordIds].reverse();
-  console.log(wordIds);
+  const reversedWordIds = useMemo(() => {
+    return [...wordIds].reverse();
+  }, [wordIds]);
   return (
     <>
       <div className="flex flex-col justify-center items-center space-y-8 max-w-sm p-8 md:max-w-screen-lg mx-auto">
