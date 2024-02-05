@@ -65,7 +65,7 @@ function Box({ selectBoxWords, decreaseAmount }) {
   }
 
   return (
-    <div className="flex flex-col  justify-center items-center space-y-8  pb-20">
+    <div className="flex justify-center items-center  pb-20">
       <div className="drop-shadow-2xl flex flex-col items-center p-4 rounded-md bg-slate-700 w-11/12 sm:w-2/3 lg:w-1/3">
         <SpeakButton className="self-start" text={word} />
         <div className="text-2xl font-semibold">{meaning}</div>
