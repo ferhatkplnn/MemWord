@@ -21,11 +21,13 @@ Bu uygulama, kullanıcıların İngilizce kelimeler öğrenmelerine ve pratik ya
 
 - **Otamatik Sıralama:** Kullanıcılar, doğru bir şekilde cevaplanan kelimeler "Box 1" bölümünden "Box 2" bölümüne, tamamen öğrenilen kelimeler ise "Box 3" bölümüne otomatik olarak geçer.
 
+- **Kart Gösterimi:** Her bir kelimenin ayrı bir kart üzerinde gösterildiği özel bir görsel arayüz eklenmiştir. Bu kartlar, kullanıcının kelimeleri daha etkili bir şekilde öğrenmesine yardımcı olabilir.
+
 ## Nasıl Kullanılır?
 
 1. **Kelime Ekleyin:** Ana sayfada yer alan "Kelime Ekle" butonuna tıklayarak öğrenmek istediğiniz kelimeleri ekleyin.
 
-2. **Rasgele Kelime Gösterme:** "Kelime Öğren" butonuna tıklayarak eklediğiniz kelimeler arasında rasgele seçilen bir kelime ile karşılaşın ve anlamını yazmaya çalışın.
+2. **Rasgele Kelime Gösterme:** Kutulardan birine tıklayarak eklediğiniz kelimeler arasında rasgele seçilen bir kelime ile karşılaşın ve anlamını yazmaya çalışın.
 
 3. **Sesli Okuma:** Her kelimenin üzerine tıklayarak doğru telaffuzunu dinleyin.
 
@@ -33,10 +35,14 @@ Bu uygulama, kullanıcıların İngilizce kelimeler öğrenmelerine ve pratik ya
 
 5. **Kelime Sıralaması:** Doğru bir şekilde cevaplanan kelimeler otomatik olarak "Box 1" bölümünden "Box 2" bölümüne geçer. Tamamen öğrenilen kelimeler ise "Box 3" bölümüne eklenir.
 
+6. **Kart:** Kelime kartlarına tıklayarak anlamlarını ve telaffuzlarını öğrenebilirsiniz.
+
 ## Gorseller
-![image](https://github.com/ferhatkplnn/MemWord/assets/29931637/076c5081-5436-456a-ad31-074cca0d853b)
+![image](https://github.com/ferhatkplnn/MemWord/assets/29931637/b64b48c6-0417-45c4-9556-fb1e737dd541)
 ![image](https://github.com/ferhatkplnn/MemWord/assets/29931637/9f543bd3-36a3-4e85-9d85-a0aa389ff12d)
 ![image](https://github.com/ferhatkplnn/MemWord/assets/29931637/7c50ce05-c1f3-4b04-942c-1af35bcbf260)
+![image](https://github.com/ferhatkplnn/MemWord/assets/29931637/be7cebc2-0f23-4e4e-93b2-8b078f775a7d)
+![image](https://github.com/ferhatkplnn/MemWord/assets/29931637/3443afb1-2655-40d0-9b30-49858a22b987)
 
 ## Kurulum
 
