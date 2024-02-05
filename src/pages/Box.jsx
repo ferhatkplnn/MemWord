@@ -104,13 +104,14 @@ function Box({ selectBoxWords, decreaseAmount }) {
 export default Box;
 
 function useRandomWord(words) {
-  const prevWordIdRef = useRef(null);
   const [randomWordId, setRandomWordId] = useState(() =>
     getRandomWordId(words)
   );
+  const prevWordIdRef = useRef(randomWordId);
   const randomWord = useSelector((state) =>
     selectWordById(state, randomWordId)
   );
+
   const [hiddenWord, setHiddenWord] = useState("");
   const [sentence, setSentence] = useState(() =>
     getRandomSentence(randomWord?.sentences || [])
@@ -132,6 +133,9 @@ function useRandomWord(words) {
       newWordId = getRandomWordId(words);
     }
     prevWordIdRef.current = newWordId;
+    if (words.length === 1) {
+      setHiddenWord(hideWordLetters(randomWord?.word || "no more"));
+    }
     setRandomWordId(newWordId);
     setWarningClass("");
     setShowSentence(false);
