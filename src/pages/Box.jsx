@@ -17,6 +17,7 @@ import SpeakButton from "../components/SpeakButton";
 function Box({ selectBoxWords, decreaseAmount }) {
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
+  const [successClass, setSuccessClass] = useState("");
   const words = useSelector(selectBoxWords);
 
   const {
@@ -27,9 +28,10 @@ function Box({ selectBoxWords, decreaseAmount }) {
     warningClass,
     nextWord,
     showHint,
+    setHiddenWord,
   } = useRandomWord(words);
 
-  const { word, meaning } = randomWord;
+  const { word, meaning } = randomWord || { word: "", meaning: "" };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,8 +41,13 @@ function Box({ selectBoxWords, decreaseAmount }) {
       randomWord.word.toLowerCase() === inputText.toLowerCase();
 
     if (isInputCorrect) {
-      dispatch(increaseScore({ id: randomWord.id }));
-      nextWord();
+      setSuccessClass("text-green-500 scale-105 duration-500");
+      setHiddenWord(word);
+      setTimeout(() => {
+        dispatch(increaseScore({ id: randomWord.id }));
+        nextWord();
+        setSuccessClass("");
+      }, 2000);
     } else {
       dispatch(decreaseScore({ id: randomWord.id, amount: decreaseAmount }));
       showHint();
@@ -63,7 +70,7 @@ function Box({ selectBoxWords, decreaseAmount }) {
         <SpeakButton className="self-start" text={word} />
         <div className="text-2xl font-semibold">{meaning}</div>
         <div
-          className={`text-4xl font-extrabold h-40 break-all mt-12 tracking-widest ${warningClass}`}
+          className={`text-4xl font-extrabold h-40 break-all mt-12 tracking-widest ${warningClass} ${successClass} `}
         >
           {hiddenWord}
         </div>
@@ -122,6 +129,7 @@ function useRandomWord(words) {
     setRandomWordId(getRandomWordId(words));
     setWarningClass("");
     setShowSentence(false);
+    setHiddenWord(hideWordLetters(randomWord?.word || "no more"));
   };
 
   const showHint = () => {
@@ -138,5 +146,6 @@ function useRandomWord(words) {
     warningClass,
     nextWord,
     showHint,
+    setHiddenWord,
   };
 }
