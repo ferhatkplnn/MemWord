@@ -29,6 +29,8 @@ function Box({ selectBox1Words, decreaseAmount }) {
     showHint,
   } = useRandomWord(words);
 
+  const { word, meaning } = randomWord;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!inputText) return;
@@ -58,8 +60,8 @@ function Box({ selectBox1Words, decreaseAmount }) {
   return (
     <div className="flex flex-col  justify-center items-center space-y-8  pb-20">
       <div className="drop-shadow-2xl flex flex-col items-center p-4 rounded-md bg-slate-700 w-11/12 sm:w-2/3 lg:w-1/3">
-        <SpeakButton className="self-start" text={randomWord.word} />
-        <div className="text-2xl font-semibold">{randomWord.meaning}</div>
+        <SpeakButton className="self-start" text={word} />
+        <div className="text-2xl font-semibold">{meaning}</div>
         <div
           className={`text-4xl font-extrabold h-40 break-all mt-12 tracking-widest ${warningClass}`}
         >
