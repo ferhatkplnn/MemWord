@@ -70,7 +70,7 @@ function Box({ selectBoxWords, decreaseAmount }) {
         <SpeakButton className="self-start" text={word} />
         <div className="text-2xl font-semibold">{meaning}</div>
         <div
-          className={`text-4xl font-extrabold h-10 sm:h-40 break-all mt-12 tracking-widest ${warningClass} ${successClass} `}
+          className={`text-4xl font-extrabold sm:h-40 break-all mt-12 tracking-widest ${warningClass} ${successClass} `}
         >
           {hiddenWord}
         </div>
