@@ -10,9 +10,18 @@ function Card() {
   const words = useSelector(selectCardWords);
 
   useEffect(() => {
+    if (words[wordIndex] === undefined) return;
     const cancelSpeech = speak(words[wordIndex].word);
     return () => cancelSpeech();
   }, [wordIndex, words]);
+
+  if (words.length === 0) {
+    return (
+      <div className="text-3xl text-center text-yellow-400">
+        Başka kelime yok.
+      </div>
+    );
+  }
 
   const handleNextClick = () => {
     setWordIndex((prev) => (prev !== words.length - 1 ? prev + 1 : prev));
