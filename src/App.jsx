@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Toast from "./components/Toast";
 import { useSelector } from "react-redux";
 import SentenceModal from "./components/SentenceModal";
+import HomeButton from "./components/buttons/HomeButton";
 
 function App() {
   const toast = useSelector((state) => state.UI.toast);
@@ -14,6 +15,7 @@ function App() {
       <Outlet />
       {toast.status === "showing" && <Toast />}
       {isShowModal && <SentenceModal />}
+      <HomeButton />
     </>
   );
 }
