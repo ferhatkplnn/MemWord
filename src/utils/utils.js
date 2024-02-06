@@ -51,7 +51,7 @@ export const scrollToElement = (node) => {
   setTimeout(() => {
     node.scrollIntoView({
       behavior: "smooth",
-      block: "end",
+      block: "center",
       inline: "center",
     });
   }, 1000);
