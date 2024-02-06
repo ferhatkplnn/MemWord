@@ -54,5 +54,5 @@ export const scrollToElement = (node) => {
       block: "start",
       inline: "center",
     });
-  }, 1000);
+  }, 300);
 };
