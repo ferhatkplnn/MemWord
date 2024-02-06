@@ -48,9 +48,11 @@ export const speak = (text, rate = 0.8) => {
 };
 
 export const scrollToElement = (node) => {
-  node.scrollIntoView({
-    behavior: "smooth",
-    block: "end",
-    inline: "center",
-  });
+  setTimeout(() => {
+    node.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "center",
+    });
+  }, 1000);
 };
