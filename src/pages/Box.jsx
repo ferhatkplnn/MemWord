@@ -9,6 +9,7 @@ import {
   getRandomSentence,
   getRandomWordId,
   hideWordLetters,
+  scrollToElement,
   speak,
 } from "../utils/utils";
 import { useEffect, useRef, useState } from "react";
@@ -66,7 +67,10 @@ function Box({ selectBoxWords, decreaseAmount }) {
 
   return (
     <div className="flex justify-center items-center ">
-      <div className="drop-shadow-2xl flex flex-col items-center p-4 rounded-md bg-slate-700 w-11/12 sm:w-2/3 lg:w-1/3">
+      <div
+        id="card"
+        className="drop-shadow-2xl flex flex-col items-center p-4 rounded-md bg-slate-700 w-11/12 sm:w-2/3 lg:w-1/3"
+      >
         <SpeakButton className="self-start" text={word} />
         <div className="text-2xl font-semibold">{meaning}</div>
         <div
@@ -86,6 +90,10 @@ function Box({ selectBoxWords, decreaseAmount }) {
         <div className="flex flex-col w-full space-y-2">
           <form onSubmit={handleSubmit} className="space-y-2">
             <Input
+              onFocus={() => {
+                const node = document.getElementById("card");
+                scrollToElement(node);
+              }}
               className="w-full"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}

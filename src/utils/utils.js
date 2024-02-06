@@ -46,3 +46,11 @@ export const speak = (text, rate = 0.8) => {
 
   return cancelSpeech;
 };
+
+export const scrollToElement = (node) => {
+  node.scrollIntoView({
+    behavior: "smooth",
+    block: "end",
+    inline: "center",
+  });
+};
