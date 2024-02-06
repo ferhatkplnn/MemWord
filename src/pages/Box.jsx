@@ -79,9 +79,9 @@ function Box({ selectBoxWords, decreaseAmount }) {
           {hiddenWord}
         </div>
         <div className="flex w-full flex-col  text-sm text-slate-400 text-center min-h-12">
-          {showSentence ? (
+          {showSentence && sentence ? (
             <>
-              <SpeakButton text={sentence || ""} /> <span>{sentence}</span>
+              <SpeakButton text={sentence} /> <span>{sentence}</span>
             </>
           ) : (
             ""
