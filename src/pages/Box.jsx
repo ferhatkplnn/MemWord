@@ -19,6 +19,7 @@ function Box({ selectBoxWords, decreaseAmount }) {
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
   const [successClass, setSuccessClass] = useState("");
+  const cardRef = useRef(null);
   const words = useSelector(selectBoxWords);
 
   const {
@@ -68,7 +69,7 @@ function Box({ selectBoxWords, decreaseAmount }) {
   return (
     <div className="flex justify-center items-center ">
       <div
-        id="card"
+        ref={cardRef}
         className="drop-shadow-2xl flex flex-col items-center p-4 rounded-md bg-slate-700 w-11/12 sm:w-2/3 lg:w-1/3"
       >
         <SpeakButton className="self-start" text={word} />
@@ -91,7 +92,7 @@ function Box({ selectBoxWords, decreaseAmount }) {
           <form onSubmit={handleSubmit} className="space-y-2">
             <Input
               onFocus={() => {
-                const node = document.getElementById("card");
+                const node = cardRef.current;
                 scrollToElement(node);
               }}
               className="w-full"
