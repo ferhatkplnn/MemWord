@@ -18,7 +18,6 @@ export const saveWords = {
     decreaseScore
   ),
   effect: (action, listenerApi) => {
-    console.log("LocalStorage guncellendi");
     const words = listenerApi.getState().words;
     localStorage.setItem("words", JSON.stringify(words));
   },

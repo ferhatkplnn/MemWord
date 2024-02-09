@@ -32,10 +32,7 @@ function SentenceModal() {
 
   useEffect(() => {
     setIsEffetcActive(true);
-    console.log("Modal render edildi");
-    return () => {
-      console.log("Modla sokuldu");
-    };
+    return () => {};
   }, []);
 
   return (
