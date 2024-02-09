@@ -26,7 +26,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "/box-1",
-        element: <Box selectBoxWords={selectBox1Words} decreaseAmount={2} />,
+        element: (
+          <Box
+            selectBoxWords={selectBox1Words}
+            decreaseAmount={2}
+            isShowHiddenWord={true}
+          />
+        ),
       },
       {
         path: "/box-2",
