@@ -87,6 +87,9 @@ function Box({ selectBoxWords, decreaseAmount, isShowHiddenWord = false }) {
                 <div className="flex justify-between">
                   Wrong: <span>{randomWord.count.wrong}</span>
                 </div>
+                <div className="flex justify-between">
+                  Combo: <span>{randomWord.count.combo}</span>
+                </div>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
