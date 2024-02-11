@@ -72,7 +72,10 @@ function Box({ selectBoxWords, decreaseAmount, isShowHiddenWord = false }) {
         ref={cardRef}
         className="drop-shadow-2xl flex flex-col items-center p-4 rounded-md bg-slate-700 w-11/12 sm:w-2/3 lg:w-1/3"
       >
-        <SpeakButton className="self-start" text={word} />
+        <div className="flex w-full justify-between">
+          <SpeakButton className="" text={word} />{" "}
+          <span className="font-bold">{words.length}</span>{" "}
+        </div>
         <div className="text-2xl font-semibold">{meaning}</div>
         <div
           className={`text-4xl font-extrabold font-mono sm:h-40 break-all mt-2 sm:mt-12 tracking-widest ${warningClass} ${successClass} `}
