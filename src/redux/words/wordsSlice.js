@@ -21,7 +21,7 @@ const wordsSlice = createSlice({
             id: nanoid(),
             word: data.word,
             meaning: data.meaning,
-            count: { wrong: 0, current: 0, score: 0 },
+            count: { wrong: 0, current: 0, score: 0, combo: 0 },
             sentences: [],
           },
         };
@@ -38,6 +38,13 @@ const wordsSlice = createSlice({
     },
     increaseScore: (state, action) => {
       const { id } = action.payload;
+      const { combo } = state.entities[id].count;
+      let amount = 1;
+      if (combo > 5) {
+        amount = 2;
+      } else if (combo > 10) {
+        amount = 4;
+      }
 
       wordsAdapter.updateOne(state, {
         id,
@@ -45,7 +52,8 @@ const wordsSlice = createSlice({
           count: {
             ...state.entities[id].count,
             current: state.entities[id].count.current + 1,
-            score: state.entities[id].count.score + 1,
+            score: state.entities[id].count.score + amount,
+            combo: state.entities[id].count.combo + 1,
           },
         },
       });
@@ -60,6 +68,7 @@ const wordsSlice = createSlice({
             ...state.entities[id].count,
             wrong: state.entities[id].count.wrong + 1,
             score: state.entities[id].count.score - amount,
+            combo: 0,
           },
         },
       });
