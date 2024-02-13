@@ -14,6 +14,7 @@ import {
 } from "../utils/utils";
 import { useEffect, useRef, useState } from "react";
 import SpeakButton from "../components/SpeakButton";
+import ProgressBar from "../components/ProgressBar";
 
 function Box({ selectBoxWords, decreaseAmount, isShowHiddenWord = false }) {
   const dispatch = useDispatch();
@@ -43,10 +44,10 @@ function Box({ selectBoxWords, decreaseAmount, isShowHiddenWord = false }) {
       randomWord.word.toLowerCase() === inputText.toLowerCase();
 
     if (isInputCorrect) {
+      dispatch(increaseScore({ id: randomWord.id }));
       setSuccessClass("text-green-500 scale-105 duration-500");
       setHiddenWord(word);
       setTimeout(() => {
-        dispatch(increaseScore({ id: randomWord.id }));
         nextWord();
         setSuccessClass("");
       }, 2000);
@@ -110,9 +111,10 @@ function Box({ selectBoxWords, decreaseAmount, isShowHiddenWord = false }) {
         </div>
         <div className="text-2xl font-semibold">{meaning}</div>
         <div
-          className={`text-4xl font-extrabold font-mono sm:h-40 break-all mt-2 sm:mt-12 tracking-widest ${warningClass} ${successClass} `}
+          className={`text-4xl font-extrabold font-mono sm:h-40 break-all mt-2 sm:mt-12 tracking-widest flex flex-col items-center ${warningClass} ${successClass} `}
         >
           {hiddenWord}
+          <ProgressBar score={randomWord.count.score} key={randomWord.word} />
         </div>
         <div className="flex w-full flex-col  text-sm text-slate-400 text-center min-h-12">
           {showSentence && sentence ? (

@@ -56,3 +56,28 @@ export const scrollToElement = (node) => {
     });
   }, 300);
 };
+
+export const scoreToPercentage = (score) => {
+  let filteredScore = score;
+  if (score < 0) {
+    filteredScore = 0;
+  } else if (score > 40) {
+    filteredScore = 40;
+  }
+  return ((filteredScore * 100) / 40).toFixed(0);
+};
+
+export const colorByPercentage = (percentage) => {
+  switch (true) {
+    case percentage <= 20:
+      return "bg-red-500";
+    case percentage > 20 && percentage <= 40:
+      return "bg-amber-500";
+    case percentage > 40 && percentage <= 60:
+      return "bg-yellow-500";
+    case percentage > 60 && percentage <= 80:
+      return "bg-lime-500";
+    default:
+      return "bg-green-500";
+  }
+};
