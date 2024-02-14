@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { LiaRandomSolid } from "react-icons/lia";
-import { FaSortAmountUpAlt } from "react-icons/fa";
 import MemoizedSpeakButton from "../components/SpeakButton";
 import {
   selectCardWords,
@@ -9,8 +7,8 @@ import {
   selectSortedByIncorrectCountCardWords,
 } from "../redux/words/wordsSlice";
 import { speak } from "../utils/utils";
-import { arrowLeft, arrowRight } from "../assets/icons";
-import ArrowButton from "../components/buttons/ArrowButton";
+import StatusButton from "../components/buttons/StatusButton";
+import CardPager from "../components/CardPager";
 
 const selects = {
   normal: selectCardWords,
@@ -56,21 +54,12 @@ const Card = () => {
         <span className="text-slate-400">Filter the cards:</span>
         <div className="flex gap-2">
           {["normal", "random", "sorted"].map((status) => (
-            <button
+            <StatusButton
               key={status}
-              className={`${
-                cardFilterStatus === status ? " ring-2" : ""
-              } border-slate-500 px-2 py-1 text-sm rounded bg-slate-700`}
-              onClick={() => handleFilterStatus(status)}
-            >
-              {status === "random" ? (
-                <LiaRandomSolid />
-              ) : status === "sorted" ? (
-                <FaSortAmountUpAlt />
-              ) : (
-                "Normal"
-              )}
-            </button>
+              status={status}
+              cardFilterStatus={cardFilterStatus}
+              handleFilterStatus={handleFilterStatus}
+            />
           ))}
         </div>
       </div>
@@ -90,21 +79,12 @@ const Card = () => {
         </div>
         <div className="back text-5xl">{words[wordIndex]?.meaning}</div>
       </div>
-      <div className="py-2 flex items-center space-x-4">
-        <ArrowButton
-          isDisable={wordIndex === 0}
-          handleClick={handlePrevClick}
-          imgURL={arrowLeft}
-        />
-        <span>
-          {wordIndex + 1} / {words.length}
-        </span>
-        <ArrowButton
-          isDisable={wordIndex === words.length - 1}
-          handleClick={handleNextClick}
-          imgURL={arrowRight}
-        />
-      </div>
+      <CardPager
+        handleNextClick={handleNextClick}
+        handlePrevClick={handlePrevClick}
+        wordIndex={wordIndex}
+        words={words}
+      />
     </div>
   );
 };
