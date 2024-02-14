@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function NavigationCards({ to, title, description }) {
@@ -15,5 +16,11 @@ function NavigationCards({ to, title, description }) {
     </>
   );
 }
+
+NavigationCards.propTypes = {
+  to: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
 export default NavigationCards;

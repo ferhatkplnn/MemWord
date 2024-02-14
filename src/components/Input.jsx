@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function Input({ className, ...props }) {
   return (
     <>
@@ -8,5 +10,9 @@ function Input({ className, ...props }) {
     </>
   );
 }
+
+Input.propTypes = {
+  className: PropTypes.string,
+};
 
 export default Input;

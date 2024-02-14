@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function AddButton({ className, ...props }) {
   return (
     <>
@@ -23,5 +24,9 @@ function AddButton({ className, ...props }) {
     </>
   );
 }
+
+AddButton.propTypes = {
+  className: PropTypes.string,
+};
 
 export default AddButton;

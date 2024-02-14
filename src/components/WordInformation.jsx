@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import ScoreBoard from "./ScoreBoard";
 
 function WordInformation({ words, randomWord }) {
@@ -26,5 +27,10 @@ function WordInformation({ words, randomWord }) {
     </>
   );
 }
+
+WordInformation.propTypes = {
+  words: PropTypes.array.isRequired,
+  randomWord: PropTypes.object.isRequired,
+};
 
 export default WordInformation;

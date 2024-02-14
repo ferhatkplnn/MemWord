@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState, memo } from "react";
 
 const SpeakButton = ({ text, ...props }) => {
@@ -64,6 +65,10 @@ const SpeakButton = ({ text, ...props }) => {
       )}
     </button>
   );
+};
+
+SpeakButton.propTypes = {
+  text: PropTypes.string.isRequired,
 };
 
 const MemoizedSpeakButton = memo(SpeakButton);

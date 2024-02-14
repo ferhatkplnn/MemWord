@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { colorByPercentage, scoreToPercentage } from "../utils/utils";
 
 function ProgressBar({ score }) {
@@ -13,5 +14,9 @@ function ProgressBar({ score }) {
     </div>
   );
 }
+
+ProgressBar.propTypes = {
+  score: PropTypes.number.isRequired,
+};
 
 export default ProgressBar;

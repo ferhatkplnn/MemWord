@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function ScoreBoard({ randomWord }) {
   return (
     <>
@@ -18,5 +20,16 @@ function ScoreBoard({ randomWord }) {
     </>
   );
 }
+
+ScoreBoard.propTypes = {
+  randomWord: PropTypes.shape({
+    count: PropTypes.shape({
+      score: PropTypes.number.isRequired,
+      current: PropTypes.number.isRequired,
+      wrong: PropTypes.number.isRequired,
+      combo: PropTypes.number.isRequired,
+    }),
+  }),
+};
 
 export default ScoreBoard;
