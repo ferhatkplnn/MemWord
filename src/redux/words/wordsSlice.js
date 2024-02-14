@@ -95,7 +95,10 @@ export const selectBox3Words = createSelector(selectAllWords, (words) =>
 );
 
 export const selectHardBoxWords = createSelector(selectAllWords, (words) =>
-  words.filter((word) => word.count.wrong > 40 && word.count.score < 80)
+  words
+    .filter((word) => word.count.score < 60)
+    .sort((a, b) => b.count.wrong - a.count.wrong)
+    .slice(0, 10)
 );
 
 export const selectCardWords = createSelector(selectAllWords, (words) =>
