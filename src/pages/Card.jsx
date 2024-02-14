@@ -1,43 +1,81 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectCardWords } from "../redux/words/wordsSlice";
+import { LiaRandomSolid } from "react-icons/lia";
+import { FaSortAmountUpAlt } from "react-icons/fa";
 import MemoizedSpeakButton from "../components/SpeakButton";
+import {
+  selectCardWords,
+  selectRandomCardWords,
+  selectSortedByIncorrectCountCardWords,
+} from "../redux/words/wordsSlice";
 import { speak } from "../utils/utils";
+import { arrowLeft, arrowRight } from "../assets/icons";
+import ArrowButton from "../components/buttons/ArrowButton";
 
-function Card() {
+const selects = {
+  normal: selectCardWords,
+  random: selectRandomCardWords,
+  sorted: selectSortedByIncorrectCountCardWords,
+};
+
+const Card = () => {
   const [isShowBack, setIsShowBack] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
-  const words = useSelector(selectCardWords);
+  const [cardFilterStatus, setCardFilterStatus] = useState("normal");
+  const words = useSelector(selects[cardFilterStatus]);
 
   useEffect(() => {
-    if (words[wordIndex] === undefined) return;
-    const cancelSpeech = speak(words[wordIndex].word);
-    return () => cancelSpeech();
+    if (words[wordIndex]) {
+      const cancelSpeech = speak(words[wordIndex].word);
+      return () => cancelSpeech();
+    }
   }, [wordIndex, words]);
 
-  if (words.length === 0) {
-    return (
-      <div className="text-3xl text-center text-yellow-400">
-        Başka kelime yok.
-      </div>
-    );
-  }
+  const handleFilterStatus = (status) => {
+    setCardFilterStatus(status);
+    setWordIndex(0);
+  };
 
   const handleNextClick = () => {
-    setWordIndex((prev) => (prev !== words.length - 1 ? prev + 1 : prev));
+    setWordIndex((prev) => (prev < words.length - 1 ? prev + 1 : prev));
   };
 
   const handlePrevClick = () => {
-    setWordIndex((prev) => (prev !== 0 ? prev - 1 : prev));
+    setWordIndex((prev) => (prev > 0 ? prev - 1 : prev));
+  };
+
+  const toggleShowBack = (e) => {
+    if (e.target.tagName !== "svg" && e.target.tagName !== "path") {
+      setIsShowBack((prev) => !prev);
+    }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center gap-1">
+      <div className="w-11/12 sm:max-w-lg flex justify-between">
+        <span className="text-slate-400">Filter the cards:</span>
+        <div className="flex gap-2">
+          {["normal", "random", "sorted"].map((status) => (
+            <button
+              key={status}
+              className={`${
+                cardFilterStatus === status ? " ring-2" : ""
+              } border-slate-500 px-2 py-1 text-sm rounded bg-slate-700`}
+              onClick={() => handleFilterStatus(status)}
+            >
+              {status === "random" ? (
+                <LiaRandomSolid />
+              ) : status === "sorted" ? (
+                <FaSortAmountUpAlt />
+              ) : (
+                "Normal"
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
       <div
-        onClick={(e) => {
-          if (e.target.tagName !== "svg" && e.target.tagName !== "path")
-            setIsShowBack(!isShowBack);
-        }}
+        onClick={toggleShowBack}
         className={`card ${
           isShowBack ? "open" : ""
         } h-96 flex flex-col items-center rounded-md bg-slate-700 w-11/12 sm:max-w-lg cursor-pointer select-none`}
@@ -46,59 +84,29 @@ function Card() {
           <MemoizedSpeakButton
             name="sound"
             className="self-start absolute left-4 top-4"
-            text={words[wordIndex].word}
+            text={words[wordIndex]?.word}
           />
-          {words[wordIndex].word}
+          {words[wordIndex]?.word}
         </div>
-        <div className="back text-5xl">{words[wordIndex].meaning}</div>
+        <div className="back text-5xl">{words[wordIndex]?.meaning}</div>
       </div>
-      <div className="space-x-4 py-2 flex items-center">
-        <button
-          disabled={wordIndex === 0}
-          onClick={handlePrevClick}
-          className="border-2 border-slate-400 rounded-full p-3 hover:bg-slate-100/20 duration-150 disabled:border-slate-600 disabled:hover:bg-transparent"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={3}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
-            />
-          </svg>
-        </button>
+      <div className="py-2 flex items-center space-x-4">
+        <ArrowButton
+          isDisable={wordIndex === 0}
+          handleClick={handlePrevClick}
+          imgURL={arrowLeft}
+        />
         <span>
           {wordIndex + 1} / {words.length}
         </span>
-        <button
-          disabled={wordIndex === words.length - 1}
-          onClick={handleNextClick}
-          className="border-2 border-slate-400 rounded-full p-3 hover:bg-slate-100/20 duration-150 disabled:border-slate-600 disabled:hover:bg-transparent"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={3}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-            />
-          </svg>
-        </button>
+        <ArrowButton
+          isDisable={wordIndex === words.length - 1}
+          handleClick={handleNextClick}
+          imgURL={arrowRight}
+        />
       </div>
     </div>
   );
-}
+};
 
 export default Card;
