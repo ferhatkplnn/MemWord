@@ -99,7 +99,16 @@ export const selectHardBoxWords = createSelector(selectAllWords, (words) =>
 );
 
 export const selectCardWords = createSelector(selectAllWords, (words) =>
-  words.filter((word) => word.count.score <= 40)
+  words.filter((word) => word.count.score <= 80)
+);
+
+export const selectRandomCardWords = createSelector(selectAllWords, (words) =>
+  words.sort(() => Math.random() - 0.5)
+);
+
+export const selectSortedByIncorrectCountCardWords = createSelector(
+  selectAllWords,
+  (words) => words.sort((a, b) => b.count.wrong - a.count.wrong)
 );
 
 export const {
