@@ -25,12 +25,12 @@ export const navigationCards = [
     to: "/hard-box",
     title: "Zor kutu",
     description:
-      "Bu kutu içerisinde en çok hata yaptığınız kelimeler bulunmaktadır.",
+      "Bu kutu içerisinde en çok hata yaptığınız 10 kelime bulunmaktadır.",
   },
   {
     to: "/card",
     title: "Kartlar",
     description:
-      "Bu bölüm içerisinde kelimelerin bulunduğu kartlar bulunmaktadır. Bu kartlar 1. ve 2. kutulardaki kelimeleri içermektedir.",
+      "Bu bölümde, kelimelerin bulunduğu kartları göreceksiniz. Kartları rasgele, en sık hata yapılan kelimelerin sırasına göre veya eklenme sırasına göre sıralayabilirsiniz",
   },
 ];
