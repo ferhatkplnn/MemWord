@@ -9,6 +9,7 @@ import {
 import { speak } from "../utils/utils";
 import StatusButton from "../components/buttons/StatusButton";
 import CardPager from "../components/CardPager";
+import NoMoreWord from "../components/NoMoreWord";
 
 const selects = {
   normal: selectCardWords,
@@ -47,7 +48,9 @@ const Card = () => {
       setIsShowBack((prev) => !prev);
     }
   };
-
+  if (words.length === 0) {
+    return <NoMoreWord />;
+  }
   return (
     <div className="flex flex-col items-center gap-1">
       <div className="w-11/12 sm:max-w-lg flex justify-between">

@@ -16,6 +16,7 @@ import { useEffect, useRef, useState } from "react";
 import SpeakButton from "../components/SpeakButton";
 import ProgressBar from "../components/ProgressBar";
 import WordInformation from "../components/WordInformation";
+import NoMoreWord from "../components/NoMoreWord";
 
 function Box({ selectBoxWords, decreaseAmount, isShowHiddenWord = false }) {
   const dispatch = useDispatch();
@@ -61,11 +62,7 @@ function Box({ selectBoxWords, decreaseAmount, isShowHiddenWord = false }) {
   };
 
   if (words.length === 0) {
-    return (
-      <div className="text-3xl text-center text-yellow-400">
-        Başka kelime yok.
-      </div>
-    );
+    return <NoMoreWord />;
   }
 
   return (
