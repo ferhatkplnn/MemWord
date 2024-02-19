@@ -62,8 +62,4 @@ npm install
 npm run dev
 ```
 
-## Katkılar
-
-Kat contributions.md dosyasını inceleyerek katkıda bulunma süreci hakkında daha fazla bilgi edinebilirsiniz.
-
 
