@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import Input from "./Input";
 import AddButton from "./buttons/AddButton";
@@ -8,6 +8,7 @@ import { showToast } from "../redux/words/UISlice";
 function AddWordForm() {
   const [word, setWord] = useState("");
   const [meaning, setMeaning] = useState("");
+  const inputRef = useRef(null);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -17,6 +18,7 @@ function AddWordForm() {
     setWord("");
     setMeaning("");
     dispatch(showToast({ type: "success", message: "Kelime eklendi!" }));
+    inputRef.current.focus();
   };
   return (
     <div className="drop-shadow-2xl py-4 px-8 bg-slate-700 rounded-lg">
@@ -32,6 +34,7 @@ function AddWordForm() {
           <Input
             onChange={(e) => setWord(e.target.value)}
             value={word}
+            ref={inputRef}
             required
           />
           <span className="font-extralight text-sm text-slate-400 mt-1">
