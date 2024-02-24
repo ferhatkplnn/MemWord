@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://memword.netlify.app/</loc>
+  </url>
+  <url>
+    <loc>https://memword.netlify.app/add-word</loc>
+  </url>
+  <url>
+    <loc>https://memword.netlify.app/card</loc>
+  </url>
+  <url>
+    <loc>https://memword.netlify.app/hard-box</loc>
+  </url>
+  <url>
+    <loc>https://memword.netlify.app/box-3</loc>
+  </url>
+  <url>
+    <loc>https://memword.netlify.app/box-2</loc>
+  </url>
+  <url>
+    <loc>https://memword.netlify.app/box-1</loc>
+  </url>
+</urlset>
