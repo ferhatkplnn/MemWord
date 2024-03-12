@@ -1,11 +1,14 @@
 import { configureStore, createListenerMiddleware } from "@reduxjs/toolkit";
 import wordsReducer from "./words/wordsSlice";
 import UIReducer from "./words/UISlice";
-import { saveWords } from "./listeners";
+import { saveSentence, saveWords } from "./listeners";
 import sentenceReducer from "./sentenct/sentenceSlice";
 
 const listenerMiddleware = createListenerMiddleware();
 listenerMiddleware.startListening(saveWords);
+
+const sentenceListenerMiddleware = createListenerMiddleware();
+sentenceListenerMiddleware.startListening(saveSentence);
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +17,7 @@ export const store = configureStore({
     sentence: sentenceReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(listenerMiddleware.middleware),
+    getDefaultMiddleware()
+      .concat(listenerMiddleware.middleware)
+      .concat(sentenceListenerMiddleware.middleware),
 });
