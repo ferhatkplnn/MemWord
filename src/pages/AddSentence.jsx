@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import { selectSentenceIds } from "../redux/sentence/sentenceSlice";
 import { useMemo } from "react";
 import { EditSentenceForm } from "../components/EditSentenceForm";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const AddSentence = () => {
   const sentenceIds = useSelector(selectSentenceIds);
+  const [parent] = useAutoAnimate();
 
   const reversedSentenceIds = useMemo(() => {
     return [...sentenceIds].reverse();
@@ -17,7 +19,7 @@ const AddSentence = () => {
         <h1 className="text-4xl font-bold">Cumle ekle</h1>
         <AddSentenceForm />
 
-        <div className="space-y-2 ">
+        <div ref={parent} className="space-y-2 ">
           {reversedSentenceIds.map((id) => (
             <EditSentenceForm key={id} id={id} />
           ))}
