@@ -6,7 +6,7 @@ import { store } from "./redux/store.js";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/Router";
 import { loadWords } from "./redux/words/wordsSlice.js";
-import { loadSentences } from "./redux/sentenct/sentenceSlice.js";
+import { loadSentences } from "./redux/sentence/sentenceSlice.js";
 
 store.dispatch(loadWords());
 store.dispatch(loadSentences());

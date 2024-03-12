@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import Input from "./Input";
 import AddButton from "./buttons/AddButton";
-import { addSentence } from "../redux/sentenct/sentenceSlice";
+import { addSentence } from "../redux/sentence/sentenceSlice";
 
 const AddSentenceForm = () => {
   const inputRef = useRef(null);

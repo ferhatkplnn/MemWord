@@ -8,7 +8,7 @@ import {
   increaseScore,
 } from "./words/wordsSlice";
 
-import { addSentence as addSentenceOne } from "./sentenct/sentenceSlice";
+import { addSentence as addSentenceOne } from "./sentence/sentenceSlice";
 
 export const saveWords = {
   matcher: isAnyOf(

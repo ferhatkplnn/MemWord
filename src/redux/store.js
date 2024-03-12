@@ -2,7 +2,7 @@ import { configureStore, createListenerMiddleware } from "@reduxjs/toolkit";
 import wordsReducer from "./words/wordsSlice";
 import UIReducer from "./words/UISlice";
 import { saveSentence, saveWords } from "./listeners";
-import sentenceReducer from "./sentenct/sentenceSlice";
+import sentenceReducer from "./sentence/sentenceSlice";
 
 const listenerMiddleware = createListenerMiddleware();
 listenerMiddleware.startListening(saveWords);
