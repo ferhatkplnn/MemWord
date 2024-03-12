@@ -8,7 +8,11 @@ import {
   increaseScore,
 } from "./words/wordsSlice";
 
-import { addSentence as addSentenceOne } from "./sentence/sentenceSlice";
+import {
+  addSentence as addSentenceOne,
+  deleteSentence,
+  editSentence,
+} from "./sentence/sentenceSlice";
 
 export const saveWords = {
   matcher: isAnyOf(
@@ -26,7 +30,7 @@ export const saveWords = {
 };
 
 export const saveSentence = {
-  actionCreator: addSentenceOne,
+  matcher: isAnyOf(addSentenceOne, deleteSentence, editSentence),
   effect: (action, listenerApi) => {
     const sentences = listenerApi.getState().sentence.entities;
     localStorage.setItem("sentences", JSON.stringify(sentences));
