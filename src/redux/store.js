@@ -6,9 +6,7 @@ import sentenceReducer from "./sentenct/sentenceSlice";
 
 const listenerMiddleware = createListenerMiddleware();
 listenerMiddleware.startListening(saveWords);
-
-const sentenceListenerMiddleware = createListenerMiddleware();
-sentenceListenerMiddleware.startListening(saveSentence);
+listenerMiddleware.startListening(saveSentence);
 
 export const store = configureStore({
   reducer: {
@@ -17,7 +15,5 @@ export const store = configureStore({
     sentence: sentenceReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(listenerMiddleware.middleware)
-      .concat(sentenceListenerMiddleware.middleware),
+    getDefaultMiddleware().concat(listenerMiddleware.middleware),
 });
