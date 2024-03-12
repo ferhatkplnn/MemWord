@@ -9,6 +9,8 @@ const sentenceSlice = createSlice({
   initialState,
   reducers: {
     addSentence: sentenceAdapter.addOne,
+    deleteSentence: sentenceAdapter.removeOne,
+    editSentence: sentenceAdapter.updateOne,
     loadSentences: (state) => {
       sentenceAdapter.setAll(
         state,
@@ -21,6 +23,7 @@ const sentenceSlice = createSlice({
 export const { selectIds: selectSentenceIds, selectById: selectSentenceById } =
   sentenceAdapter.getSelectors((state) => state.sentence);
 
-export const { addSentence, loadSentences } = sentenceSlice.actions;
+export const { addSentence, loadSentences, deleteSentence, editSentence } =
+  sentenceSlice.actions;
 
 export default sentenceSlice.reducer;
