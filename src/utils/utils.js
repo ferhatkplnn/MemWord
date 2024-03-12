@@ -4,6 +4,10 @@ export const getRandomWordId = (words) => {
   return randomWord?.id;
 };
 
+export const getRandomIndex = (sentences) => {
+  return Math.floor(Math.random() * sentences.length);
+};
+
 export const getRandomSentence = (sentences) => {
   const randomIndex = Math.floor(Math.random() * sentences.length);
   const randomSentence = sentences[randomIndex];
@@ -80,4 +84,8 @@ export const colorByPercentage = (percentage) => {
     default:
       return "bg-green-500";
   }
+};
+
+export const shuffleArray = (arr) => {
+  return arr.sort(() => Math.random() - 0.5);
 };
