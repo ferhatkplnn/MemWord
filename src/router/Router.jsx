@@ -10,6 +10,7 @@ import {
   selectHardBoxWords,
 } from "../redux/words/wordsSlice";
 import Card from "../pages/Card";
+import AddSentence from "../pages/AddSentence";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
         path: "/add-word",
         element: <AddWord />,
       },
+      { path: "/add-sentence", element: <AddSentence /> },
       {
         path: "/box-1",
         element: (
