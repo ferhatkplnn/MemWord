@@ -1,7 +1,19 @@
+import { useRef } from "react";
 import Input from "./Input";
 import AddButton from "./buttons/AddButton";
 
 const AddSentenceForm = () => {
+  const inputRef = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const sentence = e.target[0].value;
+    const mean = e.target[1].value;
+
+    e.target.reset();
+    inputRef.current.focus();
+  };
+
   return (
     <>
       <div className="drop-shadow-2xl py-4 px-8 bg-slate-700 rounded-lg">
@@ -9,9 +21,12 @@ const AddSentenceForm = () => {
           Yeni bir cumle ekle
         </h2>
 
-        <form onSubmit={null} className="flex items-start flex-col md:flex-row">
+        <form
+          onSubmit={handleSubmit}
+          className="flex items-start flex-col md:flex-row"
+        >
           <div className="flex flex-col">
-            <Input required />
+            <Input required ref={inputRef} />
             <span className="font-extralight text-sm text-slate-400 mt-1">
               Cumle
             </span>
