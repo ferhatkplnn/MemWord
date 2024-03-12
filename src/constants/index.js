@@ -33,4 +33,16 @@ export const navigationCards = [
     description:
       "Bu bölümde, kelimelerin bulunduğu kartları göreceksiniz. Kartları rasgele, en sık hata yapılan kelimelerin sırasına göre veya eklenme sırasına göre sıralayabilirsiniz",
   },
+
+  {
+    to: "/add-sentence",
+    title: "Cümle Ekle",
+    description: "Buradan cümle ekleyebilirsiniz.",
+  },
+  {
+    to: "/sort-the-words",
+    title: "Kelime Sıralama Oyunu",
+    description:
+      "Bu bölümde, cümle rasgele sırayla kelimelere ayrılır. Kelimeleri doğru sıraya yerleştirerek cümleyi oluşturun!",
+  },
 ];
