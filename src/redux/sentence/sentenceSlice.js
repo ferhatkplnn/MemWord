@@ -20,8 +20,11 @@ const sentenceSlice = createSlice({
   },
 });
 
-export const { selectIds: selectSentenceIds, selectById: selectSentenceById } =
-  sentenceAdapter.getSelectors((state) => state.sentence);
+export const {
+  selectIds: selectSentenceIds,
+  selectById: selectSentenceById,
+  selectAll: selectSentences,
+} = sentenceAdapter.getSelectors((state) => state.sentence);
 
 export const { addSentence, loadSentences, deleteSentence, editSentence } =
   sentenceSlice.actions;
