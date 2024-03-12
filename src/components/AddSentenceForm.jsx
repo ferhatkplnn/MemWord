@@ -1,14 +1,27 @@
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import Input from "./Input";
 import AddButton from "./buttons/AddButton";
+import { addSentence } from "../redux/sentenct/sentenceSlice";
 
 const AddSentenceForm = () => {
   const inputRef = useRef(null);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const sentence = e.target[0].value;
-    const mean = e.target[1].value;
+    const meaning = e.target[1].value;
+    const id = nanoid();
+
+    dispatch(
+      addSentence({
+        id,
+        sentence,
+        meaning,
+      })
+    );
 
     e.target.reset();
     inputRef.current.focus();
