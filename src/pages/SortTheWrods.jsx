@@ -4,6 +4,7 @@ import { useRandomIndex } from "../hooks/useRandomIndex";
 import { shuffleArray, speak } from "../utils/utils";
 import { useEffect, useState } from "react";
 import MemoizedSpeakButton from "../components/SpeakButton";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const SortTheWords = () => {
   const sentences = useSelector(selectSentences);
@@ -11,6 +12,7 @@ const SortTheWords = () => {
   const [selectedWordArray, setSelectedWordArray] = useState([]);
   const currentSentence = sentences[currentSentenceIndex];
   const [optionWordArray, setOptionWordArray] = useState([]);
+  const [parent] = useAutoAnimate();
 
   useEffect(() => {
     if (currentSentence?.sentence) {
@@ -39,12 +41,15 @@ const SortTheWords = () => {
   });
 
   const renderSelectedWords = () => (
-    <div className="flex flex-wrap cursor-pointer select-none gap-y-2">
+    <div
+      ref={parent}
+      className="flex flex-wrap cursor-pointer select-none gap-y-2"
+    >
       {selectedWordArray.map((word, index) => (
         <div
           key={index}
           onClick={() => handleSelectedToOptionClick(index)}
-          className="bg-slate-600 rounded px-2 py-1 mr-2 hover:brightness-125 duration-500"
+          className="bg-slate-600 rounded px-2 py-1 mr-2 hover:brightness-125 duration-500 drop-shadow-lg hover:ring-1 hover:ring-sky-300"
         >
           {word}
         </div>
@@ -58,7 +63,7 @@ const SortTheWords = () => {
         <div
           onClick={() => handleOptionToSelectedClick(index)}
           key={index}
-          className="bg-slate-600 px-2 py-1 select-none cursor-pointer hover:brightness-125 duration-500 drop-shadow-lg"
+          className="bg-slate-600 px-2 py-1 select-none cursor-pointer hover:brightness-125 duration-500 drop-shadow-lg hover:ring-1 hover:ring-sky-300"
         >
           {word}
         </div>
