@@ -11,6 +11,7 @@ import {
 } from "../redux/words/wordsSlice";
 import Card from "../pages/Card";
 import AddSentence from "../pages/AddSentence";
+import SortTheWrods from "../pages/SortTheWrods";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ export const router = createBrowserRouter([
         path: "/add-word",
         element: <AddWord />,
       },
+      { path: "/sort-the-words", element: <SortTheWrods /> },
       { path: "/add-sentence", element: <AddSentence /> },
       {
         path: "/box-1",
