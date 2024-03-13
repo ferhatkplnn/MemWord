@@ -99,7 +99,7 @@ const SortTheWords = () => {
           {renderOptionWords()}
         </div>
       )}
-      {renderNextButton()}
+      {sentences.length !== 0 && renderNextButton()}
     </div>
   );
 };
