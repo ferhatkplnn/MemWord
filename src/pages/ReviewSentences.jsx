@@ -30,7 +30,7 @@ const ReviewSentences = () => {
   };
 
   useEffect(() => {
-    const clear = speak(currentSentence?.sentence);
+    const clear = speak(currentSentence?.sentence || "");
 
     return () => clear();
   }, [currentSentence?.sentence]);
@@ -77,7 +77,10 @@ const ReviewSentences = () => {
         className="flex justify-center items-center flex-col outline-none"
       >
         <div className="relative flex flex-col space-y-8 p-8 max-w-screen-sm w-full h-96 bg-slate-700 rounded">
-          <MemoizedSpeakButton className="" text={currentSentence?.sentence} />
+          <MemoizedSpeakButton
+            className=""
+            text={currentSentence?.sentence || ""}
+          />
           <span className="absolute top-0 right-8">
             {sentences.length} / {currentIndex + 1}
           </span>

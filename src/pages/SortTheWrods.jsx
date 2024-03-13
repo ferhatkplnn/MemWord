@@ -23,7 +23,7 @@ const SortTheWords = () => {
 
   const handleOptionToSelectedClick = (index) => {
     const word = optionWordArray[index];
-    speak(word);
+    speak(word || "");
     setOptionWordArray((prevArray) => prevArray.filter((_, i) => i !== index));
     setSelectedWordArray((prevArray) => [...prevArray, word]);
   };
