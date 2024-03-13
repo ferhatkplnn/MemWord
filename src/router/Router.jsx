@@ -12,6 +12,7 @@ import {
 import Card from "../pages/Card";
 import AddSentence from "../pages/AddSentence";
 import SortTheWrods from "../pages/SortTheWrods";
+import ReviewSentences from "../pages/ReviewSentences";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,8 @@ export const router = createBrowserRouter([
       },
       { path: "/sort-the-words", element: <SortTheWrods /> },
       { path: "/add-sentence", element: <AddSentence /> },
+      { path: "/review-sentences", element: <ReviewSentences /> },
+
       {
         path: "/box-1",
         element: (
