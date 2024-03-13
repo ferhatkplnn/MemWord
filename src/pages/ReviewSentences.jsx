@@ -30,10 +30,10 @@ const ReviewSentences = () => {
   };
 
   useEffect(() => {
-    const clear = speak(currentSentence.sentence);
+    const clear = speak(currentSentence?.sentence);
 
     return () => clear();
-  }, [currentSentence.sentence]);
+  }, [currentSentence?.sentence]);
 
   const next = () => {
     if (sentences.length - 1 <= currentIndex) return;
@@ -61,6 +61,14 @@ const ReviewSentences = () => {
     setStatus("hide");
   };
 
+  if (sentences.length === 0) {
+    return (
+      <div className="text-3xl text-center text-yellow-400">
+        Gösterilecek bir cümle bulunamadı. Lütfen yeni bir cümle ekleyin.
+      </div>
+    );
+  }
+
   return (
     <>
       <div
@@ -69,18 +77,18 @@ const ReviewSentences = () => {
         className="flex justify-center items-center flex-col outline-none"
       >
         <div className="relative flex flex-col space-y-8 p-8 max-w-screen-sm w-full h-96 bg-slate-700 rounded">
-          <MemoizedSpeakButton className="" text={currentSentence.sentence} />
+          <MemoizedSpeakButton className="" text={currentSentence?.sentence} />
           <span className="absolute top-0 right-8">
             {sentences.length} / {currentIndex + 1}
           </span>
           <div className=" h-32 p-8 rounded text-center mt-12 space-y-4">
             <div className={`font-bold ${isShowSentence ? "" : "blur-sm"} `}>
-              {currentSentence.sentence}
+              {currentSentence?.sentence}
             </div>
             <div
               className={`text-slate-400 ${isShowMeaning ? "" : "blur-sm"} `}
             >
-              {currentSentence.meaning}
+              {currentSentence?.meaning}
             </div>
           </div>
         </div>
