@@ -25,7 +25,7 @@ const ReviewSentences = () => {
     } else if (e.key === "e" || e.key === "E") {
       show();
     } else if (e.key === "s" || e.key === "S") {
-      setStatus("hide");
+      refresh();
     }
   };
 
@@ -57,6 +57,10 @@ const ReviewSentences = () => {
     }
   };
 
+  const refresh = () => {
+    setStatus("hide");
+  };
+
   return (
     <>
       <div
@@ -84,6 +88,7 @@ const ReviewSentences = () => {
         <div className="flex space-x-8 mt-2">
           <div className="flex flex-col items-center space-y-2">
             <button
+              onClick={prev}
               disabled={currentIndex <= 0}
               className="h-14 w-14 bg-sky-600 hover:bg-sky-500 disabled:bg-slate-600 text-slate-400 flex justify-center items-center rounded-full"
             >
@@ -95,7 +100,10 @@ const ReviewSentences = () => {
           </div>
 
           <div className="flex flex-col items-center space-y-2">
-            <button className="h-14 w-14 bg-sky-600 hover:bg-sky-500 disabled:bg-slate-600 text-slate-400 flex justify-center items-center rounded-full">
+            <button
+              onClick={refresh}
+              className="h-14 w-14 bg-sky-600 hover:bg-sky-500 disabled:bg-slate-600 text-slate-400 flex justify-center items-center rounded-full"
+            >
               <IoIosRefresh size={32} />
             </button>
             <div className="border-2 border-slate-500 w-8 text-center text-slate-400">
@@ -105,6 +113,7 @@ const ReviewSentences = () => {
 
           <div className="flex flex-col items-center space-y-2">
             <button
+              onClick={show}
               disabled={status === "show"}
               className="h-14 w-14 bg-sky-600 hover:bg-sky-500 disabled:bg-slate-600 text-slate-400 flex justify-center items-center rounded-full"
             >
@@ -117,6 +126,7 @@ const ReviewSentences = () => {
 
           <div className="flex flex-col items-center space-y-2">
             <button
+              onClick={next}
               disabled={sentences.length - 1 <= currentIndex}
               className="h-14 w-14 bg-sky-600 hover:bg-sky-500 disabled:bg-slate-600 text-slate-400 flex justify-center items-center rounded-full"
             >
