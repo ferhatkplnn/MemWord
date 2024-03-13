@@ -45,4 +45,10 @@ export const navigationCards = [
     description:
       "Bu bölümde, cümle rasgele sırayla kelimelere ayrılır. Kelimeleri doğru sıraya yerleştirerek cümleyi oluşturun!",
   },
+  {
+    to: "/review-sentences",
+    title: "Cümleleri̇ gözden geçi̇ri̇n",
+    description:
+      "Bu bölümde, cümleleri gözden geçirebilirsiniz. Kelimeleri cümle içinde incelemeniz daha iyi öğrenmenizi sağlayacaktır.",
+  },
 ];
